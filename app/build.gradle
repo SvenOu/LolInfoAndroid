@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+
+    defaultConfig {
+        applicationId "com.sven.ou"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.1.0"
+        manifestPlaceholders = [
+                GETUI_APP_ID : "JDNC7CEXEv5pxelSC1eI42",
+                GETUI_APP_KEY : "WfY0GCqmSo9N4OFdrfTJY3",
+                GETUI_APP_SECRET : "mBxySQYRWc8gWCNDyIXvS8",
+                PACKAGE_NAME : applicationId
+        ]
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
+        }
+    }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "8g"
+    }
+
+    buildTypes {
+        debug {
+//            // 显示Log
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+//            versionNameSuffix "-debug"
+//
+//            minifyEnabled false
+//            zipAlignEnabled false
+//            shrinkResources false
+        }
+
+        release {
+//            // 不显示Log
+//            buildConfigField "boolean", "LOG_DEBUG", "false"
+//
+//            minifyEnabled false
+//            zipAlignEnabled false
+//            // 移除无用的resource文件
+//            shrinkResources false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//
+//            applicationVariants.all { variant ->
+//                variant.outputs.each { output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+//                        def fileName = "boohee_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+//                        output.outputFile = new File(outputFile.parent, fileName)
+//                    }
+//                }
+//            }
+        }
+    }
+    // 友盟多渠道打包
+//    productFlavors {
+//        wandoujia {}
+//        _360 {}
+//        baidu {}
+//        xiaomi {}
+//        tencent {}
+//        taobao {}
+//    }
+//
+//    productFlavors.all { flavor ->
+//        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name, APP_MODE: appMode, IS_DEVELOP_MODE: isDevelopMode]
+//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //junit
+    testCompile 'junit:junit:4.12'
+    //appcompat-v7
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.0.1'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    //dagger
+    compile 'com.squareup.dagger:dagger:1.2.+'
+    provided 'com.squareup.dagger:dagger-compiler:1.2.+'
+    //leakcanary
+    debugCompile 'com.squareup.haha:haha:2.0.3'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    //gson
+    compile 'com.google.code.gson:gson:2.7'
+    //okhttp
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //rxjava
+    compile 'io.reactivex:rxjava:1.1.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    //个推
+    compile 'com.getui:sdk:+'
+    //other
+    compile project(':android_univesal_image_loader_library_sv')
+    compile project(':dexter')
+}

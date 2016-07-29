@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">英雄联盟资料</string>
+
+    <string name="choose_play_action">选择视频播放方案</string>
+    <string name="second_activity">SurfaceView + MediaPlayer</string>
+    <string name="third_activity">VideoView</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="play_video">- PLAY Video -</string>
+    <string name="pause_video">- PAUSE Video -</string>
+
+    <string name="button1">SurfaceView + MediaPlayer</string>
+    <string name="button2">VideoView</string>
+    <string name="button3">button3</string>
+    <string name="button4">button4</string>
+    <string name="button5">button5</string>
+</resources>
