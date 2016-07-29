@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.VideoView;
 
+import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.module1.presenter.BasePresenter;
 import com.sven.ou.module.module1.presenter.ThirdPresenter;
 import com.sven.ou.navigation.Navigator;
@@ -61,7 +62,7 @@ public class ThirdPresenterImpl implements BasePresenter, ThirdPresenter {
         pausing = false;
         VideoView videoView = weakRefVideoView.get();
         if(null == videoView){
-            Log.e(TAG, "videoView is null.");
+            Logger.e(TAG, "videoView is null.");
             return;
         }
         if(videoView.isPlaying()){
@@ -75,7 +76,7 @@ public class ThirdPresenterImpl implements BasePresenter, ThirdPresenter {
     public void pauseVideo(){
         VideoView videoView = weakRefVideoView.get();
         if(null == videoView){
-            Log.e(TAG, "videoView is null.");
+            Logger.e(TAG, "videoView is null.");
             return;
         }
         if(pausing){

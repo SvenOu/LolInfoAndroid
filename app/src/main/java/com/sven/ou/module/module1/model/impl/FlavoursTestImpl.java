@@ -7,17 +7,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.sven.ou.R;
-import com.sven.ou.common.executor.RxAsyncHelper;
-import com.sven.ou.module.lol.entity.PlayerInfo;
+import com.google.gson.reflect.TypeToken;
+import com.sven.ou.common.entity.DaiWanLolResult;
+import com.sven.ou.common.utils.Logger;
+import com.sven.ou.module.lol.entity.UserArea;
 import com.sven.ou.module.module1.model.FlavoursTest;
 import com.sven.ou.network.Network;
-import com.sven.ou.network.api.Record;
 
-import rx.Observable;
+import java.lang.reflect.Type;
+import java.util.List;
+
 import rx.Observer;
-import rx.Scheduler;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -42,14 +42,14 @@ public class FlavoursTestImpl implements FlavoursTest {
             String umengChannel = bundle.getString("UMENG_CHANNEL");
             String appMode = bundle.getString("APP_MODE");
             boolean isDevelopMode = bundle.getBoolean("IS_DEVELOP_MODE");
-            Log.e(TAG, "---umengChannel: ---" + umengChannel);
-            Log.e(TAG, "---appMode: ---" + appMode);
-            Log.e(TAG, "---isDevelopMode: ---" + isDevelopMode);
+            Logger.e(TAG, "---umengChannel: ---" + umengChannel);
+            Logger.e(TAG, "---appMode: ---" + appMode);
+            Logger.e(TAG, "---isDevelopMode: ---" + isDevelopMode);
 
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "Failed to load meta-data, NameNotFound: " + e.getMessage());
+            Logger.e(TAG, "Failed to load meta-data, NameNotFound: " + e.getMessage());
         } catch (NullPointerException e) {
-            Log.e(TAG, "Failed to load meta-data, NullPointer: " + e.getMessage());
+            Logger.e(TAG, "Failed to load meta-data, NullPointer: " + e.getMessage());
         }
     }
 
@@ -93,46 +93,26 @@ public class FlavoursTestImpl implements FlavoursTest {
 //
 //        RxAsyncHelper.executeAsync(observable, subscriber);
 
-//        Network.getLolApi().getPlayerInfo("班德尔城", "SvenOu").
-//                subscribeOn(Schedulers.io()).
-//                observeOn(AndroidSchedulers.mainThread()).
-//                subscribe(new Observer<PlayerInfo>() {
-//            @Override
-//            public void onCompleted() {
-//                Log.e(TAG, "onCompleted");
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                Log.e(TAG, e.getMessage());
-//                Toast.makeText(applicationContext, e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onNext(PlayerInfo playerInfo) {
-//                Log.e(TAG, playerInfo.toString());
-//            }
-//        });
-//
-//        Network.getLolApi().getRecord("班德尔城", "SvenOu").
-//                subscribeOn(Schedulers.io()).
-//                observeOn(AndroidSchedulers.mainThread()).
-//                subscribe(new Observer<Record>() {
-//            @Override
-//            public void onCompleted() {
-////                Log.e(TAG, "onCompleted");
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                Log.e(TAG, e.getMessage());
-//                Toast.makeText(applicationContext, e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onNext(Record record) {
-//                Log.e(TAG, record.toString());
-//            }
-//        });
+        Network.getDaiWanLolApi().getUserArea("SvenOu").
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(new Observer<DaiWanLolResult<List<UserArea>>>() {
+            @Override
+            public void onCompleted() {
+//                Logger.e(TAG, "onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Logger.e(TAG, e.getMessage());
+                Toast.makeText(applicationContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNext(DaiWanLolResult<List<UserArea>> daiWanLolResult) {
+                Logger.e(TAG, daiWanLolResult.toString());
+            }
+        });
+
     }
 }

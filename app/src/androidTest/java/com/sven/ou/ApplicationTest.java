@@ -22,21 +22,21 @@ public class ApplicationTest extends ApplicationTestCase<AndroidApplication> {
 
     @Override
     protected void setUp() throws Exception {
-        Log.d(TAG, "setUp");
+        Logger.d(TAG, "setUp");
         super.setUp();
         createApplication();
         mAndroidApplication = getApplication();
     }
 
     public void testA() {
-        Log.d(TAG, "Running testA");
+        Logger.d(TAG, "Running testA");
         mModules = mAndroidApplication.getModules();
         assertNotNull(mModules);
     }
 
     @Override
     protected void tearDown() throws Exception {
-        Log.d(TAG, "tearDown");
+        Logger.d(TAG, "tearDown");
         super.tearDown();
     }
 }

@@ -1,7 +1,8 @@
 package com.sven.ou.network;
 
-import com.sven.ou.common.config.CommonConfig;
-import com.sven.ou.network.api.LolApi;
+import com.sven.ou.common.config.Config;
+import com.sven.ou.network.api.DaiWanLolApi;
+import com.sven.ou.network.interceptor.HttpInterceptor;
 
 import okhttp3.OkHttpClient;
 import retrofit2.CallAdapter;
@@ -17,21 +18,48 @@ public class Network {
 
     private static final String TAG = Network.class.getSimpleName();
 
-    private static LolApi lolApi;
-    private static OkHttpClient okHttpClient = new OkHttpClient();
-    private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
-    private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
+    private static DaiWanLolApi daiWanLolApi;
+    private static OkHttpClient okHttpClient;
+    private static CallAdapter.Factory rxJavaCallAdapterFactory;
+    private static Converter.Factory gsonConverterFactory;
 
-    public static LolApi getLolApi() {
-        if (lolApi == null) {
+
+    public static DaiWanLolApi getDaiWanLolApi() {
+        if (daiWanLolApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
-                    .client(okHttpClient)
-                    .baseUrl(CommonConfig.getLolBaseUrl())
-                    .addConverterFactory(gsonConverterFactory)
-                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .client(getOkHttpClient())
+                    .baseUrl(Config.getDaiWanLolBaseUrl())
+                    .addConverterFactory(getGsonConverterFactory())
+                    .addCallAdapterFactory(getRxJavaCallAdapterFactory())
                     .build();
-            lolApi = retrofit.create(LolApi.class);
+            daiWanLolApi = retrofit.create(DaiWanLolApi.class);
         }
-        return lolApi;
+        return daiWanLolApi;
     }
+
+    private static OkHttpClient getOkHttpClient() {
+        if(null == okHttpClient){
+            okHttpClient = new OkHttpClient.Builder()
+                    .addInterceptor(new HttpInterceptor())
+                    .build();
+        }
+        return okHttpClient;
+    }
+
+    private static CallAdapter.Factory getRxJavaCallAdapterFactory() {
+        if (null == rxJavaCallAdapterFactory) {
+            rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
+
+        }
+        return rxJavaCallAdapterFactory;
+    }
+
+    private static Converter.Factory getGsonConverterFactory() {
+        if (null == gsonConverterFactory) {
+            gsonConverterFactory = GsonConverterFactory.create();
+        }
+        return gsonConverterFactory;
+    }
+
+
 }

@@ -25,7 +25,7 @@ public class TestActivityInstrumentation extends ActivityInstrumentationTestCase
 
     @Override
     protected void setUp() throws Exception {
-        Log.d(TAG, "setUp");
+        Logger.d(TAG, "setUp");
         super.setUp();
         mActivity = getActivity();
         ctx = getActivity().getApplicationContext();
@@ -40,17 +40,17 @@ public class TestActivityInstrumentation extends ActivityInstrumentationTestCase
 //    }
 
     public void testText() {
-        Log.d(TAG, "Running testText");
+        Logger.d(TAG, "Running testText");
         assertEquals(resourceString, mActivity.getTitle());
     }
 
     public void testA() {
-        Log.d(TAG, "Running testA");
+        Logger.d(TAG, "Running testA");
         assertNotNull(resourceString);
     }
 
     public void testPreconditions() {
-        Log.d(TAG, "Running testPreconditions");
+        Logger.d(TAG, "Running testPreconditions");
         assertNotNull(fraContainer);
     }
 
@@ -58,7 +58,7 @@ public class TestActivityInstrumentation extends ActivityInstrumentationTestCase
 
     @Override
     protected void tearDown() throws Exception {
-        Log.d(TAG, "tearDown");
+        Logger.d(TAG, "tearDown");
         super.tearDown();
     }
 }

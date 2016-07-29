@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.igexin.sdk.PushConsts;
+import com.sven.ou.common.utils.Logger;
 
 /**
  * Created by sven-ou on 2016/7/28.
@@ -22,7 +23,7 @@ public class PushReceiver extends BroadcastReceiver{
 
                 String cid = bundle.getString("clientid");
                 // TODO:处理cid返回
-                Log.e(TAG, "cid = " + cid);
+                Logger.e(TAG, "cid = " + cid);
                 break;
             case PushConsts.GET_MSG_DATA:
 
@@ -32,10 +33,10 @@ public class PushReceiver extends BroadcastReceiver{
                 if (payload != null) {
                     String data = new String(payload);
                     // TODO:接收处理透传（payload）数据
-                    Log.e(TAG, "data = " + data);
+                    Logger.e(TAG, "data = " + data);
                 }
-                Log.e(TAG, "taskid = " + taskid);
-                Log.e(TAG, "messageid = " + messageid);
+                Logger.e(TAG, "taskid = " + taskid);
+                Logger.e(TAG, "messageid = " + messageid);
                 break;
             default:
                 break;

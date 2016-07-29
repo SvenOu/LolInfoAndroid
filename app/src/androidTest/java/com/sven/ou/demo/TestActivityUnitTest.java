@@ -26,7 +26,7 @@ public class TestActivityUnitTest extends ActivityUnitTestCase<SecondActivity> {
 
     @Override
     protected void setUp() throws Exception {
-        Log.d(TAG, "setUp");
+        Logger.d(TAG, "setUp");
         super.setUp();
         mStartIntent = new Intent(Intent.ACTION_MAIN);
     }
@@ -68,7 +68,7 @@ public class TestActivityUnitTest extends ActivityUnitTestCase<SecondActivity> {
 
     @Override
     protected void tearDown() throws Exception {
-        Log.d(TAG, "tearDown");
+        Logger.d(TAG, "tearDown");
         super.tearDown();
     }
 }

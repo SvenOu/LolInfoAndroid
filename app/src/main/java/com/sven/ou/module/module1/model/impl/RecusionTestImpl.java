@@ -3,6 +3,7 @@ package com.sven.ou.module.module1.model.impl;
 import android.content.Context;
 import android.util.Log;
 
+import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.module1.model.RecusionTest;
 
 /**
@@ -56,8 +57,8 @@ public class RecusionTestImpl implements RecusionTest {
 
     @Override
     public void testAll(){
-        Log.e(TAG, "求1+2+3+……+100的值: " + this.test1(100));
-        Log.e(TAG, "分治法找最大值: " + this.test2(new long[]{ 3, 7, 5, 51, 787, 654 , 87, 7, 7, 88}, 0 , 9));
-        Log.e(TAG, "假定在A[1..9]中顺序存放这九个数：-7,-2,0,5,16,43,57,102,291 要求检索N是否在数组中: " + this.test3(new long[]{ -7,-2,0,5,16,43,57,102,291},16, 0 , 8));
+        Logger.e(TAG, "求1+2+3+……+100的值: " + this.test1(100));
+        Logger.e(TAG, "分治法找最大值: " + this.test2(new long[]{ 3, 7, 5, 51, 787, 654 , 87, 7, 7, 88}, 0 , 9));
+        Logger.e(TAG, "假定在A[1..9]中顺序存放这九个数：-7,-2,0,5,16,43,57,102,291 要求检索N是否在数组中: " + this.test3(new long[]{ -7,-2,0,5,16,43,57,102,291},16, 0 , 8));
     }
 }
