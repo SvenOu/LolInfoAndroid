@@ -1,7 +1,8 @@
 package com.sven.ou.network;
 
 import com.sven.ou.common.config.Config;
-import com.sven.ou.network.api.DaiWanLolApi;
+import com.sven.ou.network.api.DaiWanLolDataApi;
+import com.sven.ou.network.api.DaiWanLolVideoApi;
 import com.sven.ou.network.interceptor.HttpInterceptor;
 
 import okhttp3.OkHttpClient;
@@ -18,23 +19,36 @@ public class Network {
 
     private static final String TAG = Network.class.getSimpleName();
 
-    private static DaiWanLolApi daiWanLolApi;
+    private static DaiWanLolDataApi daiWanLolDataApi;
+    private static DaiWanLolVideoApi daiWanLolVideoApi;
     private static OkHttpClient okHttpClient;
     private static CallAdapter.Factory rxJavaCallAdapterFactory;
     private static Converter.Factory gsonConverterFactory;
 
 
-    public static DaiWanLolApi getDaiWanLolApi() {
-        if (daiWanLolApi == null) {
+    public static DaiWanLolDataApi getDaiWanLolDataApi() {
+        if (daiWanLolDataApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .client(getOkHttpClient())
-                    .baseUrl(Config.getDaiWanLolBaseUrl())
+                    .baseUrl(Config.getDaiWanLolDataUrl())
                     .addConverterFactory(getGsonConverterFactory())
                     .addCallAdapterFactory(getRxJavaCallAdapterFactory())
                     .build();
-            daiWanLolApi = retrofit.create(DaiWanLolApi.class);
+            daiWanLolDataApi = retrofit.create(DaiWanLolDataApi.class);
         }
-        return daiWanLolApi;
+        return daiWanLolDataApi;
+    }
+    public static DaiWanLolVideoApi getDaiWanLolVideoApi() {
+        if (daiWanLolVideoApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(getOkHttpClient())
+                    .baseUrl(Config.getDaiWanLolVideoUrl())
+                    .addConverterFactory(getGsonConverterFactory())
+                    .addCallAdapterFactory(getRxJavaCallAdapterFactory())
+                    .build();
+            daiWanLolVideoApi = retrofit.create(DaiWanLolVideoApi.class);
+        }
+        return daiWanLolVideoApi;
     }
 
     private static OkHttpClient getOkHttpClient() {
@@ -60,6 +74,4 @@ public class Network {
         }
         return gsonConverterFactory;
     }
-
-
 }

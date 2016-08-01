@@ -1,6 +1,7 @@
 package com.sven.ou.network.api;
 
 import com.sven.ou.common.entity.DaiWanLolResult;
+import com.sven.ou.module.lol.entity.Authors;
 import com.sven.ou.module.lol.entity.UserArea;
 
 import java.util.List;
@@ -12,7 +13,10 @@ import rx.Observable;
 /**
  * Created by sven-ou on 2016/7/27.
  */
-public interface DaiWanLolApi {
-    @GET("UserArea")
-    Observable<DaiWanLolResult<List<UserArea>>> getUserArea(@Query("keyword") String keyword);
+public interface DaiWanLolVideoApi{
+    /**
+     * 获取所有解说的信息
+     */
+    @GET("GetAuthors")
+    Observable<DaiWanLolResult<List<Authors>>> getAuthors();
 }

@@ -7,27 +7,36 @@ public class Config {
 
 
     /**
-     * 带玩英雄联盟服务器
+     * 带玩英雄联盟服务器 数据Api
      */
-    private static final String DAIWAN_LOL_BASE_URL = "http://lolapi.games-cube.com";
+    private static final String DAIWAN_LOL_DATA_URL = "http://lolapi.games-cube.com";
+
+    /**
+     * 带玩英雄联盟服务器 视频Api
+     */
+    private static final String DAIWAN_LOL_VIDEO_URL = "http://infoapi.games-cube.com";
 
     /**
      *公共版战绩令牌
      */
-    public static final String PUBLICK_LOL_REQUEST_TOKEN = "LMHKO-CQKLZ-JJXBU-UPZRG";
+    public static final String PUBLICK_LOL_REQUEST_TOKEN = "LKDKR-RUNSG-NESER-FJNMC";
 
-    /**
-     * 触手战绩令牌
-     */
-    public static final String TENTACLE_LOL_REQUEST_TOKEN = "LGURZ-QZGAS-WOGAV-XSXMX";
     /**
      * 视频令牌
      */
-    public static final String VIDEO_REQUEST_TOKEN = "MFJBS-BSSMN-ANRFY-HZHDN";
+    public static final String VIDEO_REQUEST_TOKEN = "KBANG-PBAKY-GDBTB-JQQBH";
+
+    /**
+     * 触手战绩令牌（云API）
+     */
+    public static final String TENTACLE_LOL_REQUEST_TOKEN = "JXZGG-IJJEU-PDPAM-DAJWF";
 
 
-    public static String getDaiWanLolBaseUrl(){
-        return DAIWAN_LOL_BASE_URL;
+    public static String getDaiWanLolDataUrl(){
+        return DAIWAN_LOL_DATA_URL;
+    }
+    public static String getDaiWanLolVideoUrl(){
+        return DAIWAN_LOL_VIDEO_URL;
     }
 
     public static boolean isDevelopMode(){

@@ -1,23 +1,52 @@
 package com.sven.ou.module.lol.entity;
 
 /**
- * Created by sven-ou on 2016/7/29.
+ * 用户名所在的区服信息及用户在区服中的基本信息
  */
 public class UserArea {
+    /**
+     * 大区ID
+     */
     private int area_id;
 
+    /**
+     * 用户唯一码
+     */
     private String qquin;
 
+    /**
+     * 用户头像
+     */
     private int icon_id;
 
     private String name;
 
+    /**
+     * 级别
+     */
     private int level;
 
+    /**
+     * 段位：
+     * 0-Challenger
+     * 1-Diamond
+     * 2-Platinum
+     * 3-Gold
+     * 4-Silver
+     * 5-Bronze
+     * 6-Master
+     */
     private int tier;
 
+    /**
+     * 子段位：
+     * 0-4 分别为I-IV
+     */
     private int queue;
 
+    /**
+     * 胜点
+     */
     private int win_point;
 
     public void setArea_id(int area_id){

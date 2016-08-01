@@ -39,14 +39,26 @@ public class HttpInterceptor implements Interceptor {
     private Request handlerRequest(Chain chain) {
         Request request = chain.request();
         if (null != request && null != request.url()) {
-            String requestUrl = request.url().toString();
-            if (requestUrl.startsWith(Config.getDaiWanLolBaseUrl())) {
-                Request compressedRequest = request.newBuilder()
-                        .header(KEY_DAIWAN_API_TOKEN, Config.PUBLICK_LOL_REQUEST_TOKEN)
-                        .build();
-                return compressedRequest;
-            }
+            return handlerHeaders(request);
+        }else {
+            Logger.e(TAG, "request or url is null !");
         }
         return request;
+    }
+
+    /**
+     * 为不同的API添加不同的头部令牌
+     */
+    private Request handlerHeaders(Request request) {
+        String apiToken = null;
+        String requestUrl = request.url().toString();
+        if (requestUrl.startsWith(Config.getDaiWanLolDataUrl())) {
+            apiToken = Config.PUBLICK_LOL_REQUEST_TOKEN;
+        }else if(requestUrl.startsWith(Config.getDaiWanLolVideoUrl())){
+            apiToken = Config.VIDEO_REQUEST_TOKEN;
+        }
+        return request.newBuilder()
+                .header(KEY_DAIWAN_API_TOKEN, apiToken)
+                .build();
     }
 }
