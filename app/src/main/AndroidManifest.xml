@@ -45,7 +45,7 @@
         android:name=".AndroidApplication"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".module.module1.activities.MainActivity">
+        <activity android:name=".module.test.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,8 +53,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".module.module1.activities.SecondActivity"></activity>
-        <activity android:name=".module.module1.activities.ThirdActivity"></activity>
+        <activity android:name=".module.test.activities.SecondActivity"></activity>
+        <activity android:name=".module.test.activities.ThirdActivity"></activity>
 
         <!--配置个推 -->
         <receiver

@@ -1,4 +1,4 @@
-package com.sven.ou.module.module1.view.impl;
+package com.sven.ou.module.test.view.impl;
 
 import android.content.Context;
 import android.location.LocationManager;
@@ -11,8 +11,8 @@ import android.widget.Button;
 
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
-import com.sven.ou.module.module1.presenter.SecondPresenter;
-import com.sven.ou.module.module1.view.SecondView;
+import com.sven.ou.module.test.presenter.SecondPresenter;
+import com.sven.ou.module.test.view.SecondView;
 
 import javax.inject.Inject;
 

@@ -19,10 +19,10 @@ import android.content.Context;
 import android.location.LocationManager;
 
 import com.sven.ou.AndroidApplication;
-import com.sven.ou.module.module1.model.FlavoursTest;
-import com.sven.ou.module.module1.model.RecusionTest;
-import com.sven.ou.module.module1.model.impl.FlavoursTestImpl;
-import com.sven.ou.module.module1.model.impl.RecusionTestImpl;
+import com.sven.ou.module.test.model.FlavoursTest;
+import com.sven.ou.module.test.model.RecusionTest;
+import com.sven.ou.module.test.model.impl.FlavoursTestImpl;
+import com.sven.ou.module.test.model.impl.RecusionTestImpl;
 
 import javax.inject.Singleton;
 

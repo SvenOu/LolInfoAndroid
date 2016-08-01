@@ -1,4 +1,4 @@
-package com.sven.ou.module.module1.model;
+package com.sven.ou.module.test.model;
 
 /**
  * Created by sven-ou on 2016/6/8.

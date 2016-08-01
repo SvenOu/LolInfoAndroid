@@ -1,8 +1,8 @@
-package com.sven.ou.module.module1.presenter;
+package com.sven.ou.module.test.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.sven.ou.module.module1.view.MainView;
+import com.sven.ou.module.test.view.MainView;
 
 /**
  * Created by sven-ou on 2016/7/18.

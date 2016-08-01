@@ -3,11 +3,10 @@ package com.sven.ou.demo;
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.sven.ou.R;
-import com.sven.ou.module.module1.activities.SecondActivity;
+import com.sven.ou.module.test.activities.SecondActivity;
 
 /**
  * Created by sven-ou on 2016/7/15.

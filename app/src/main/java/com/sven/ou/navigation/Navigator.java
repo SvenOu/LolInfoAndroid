@@ -18,8 +18,8 @@ package com.sven.ou.navigation;
 import android.content.Context;
 import android.content.Intent;
 
-import com.sven.ou.module.module1.activities.SecondActivity;
-import com.sven.ou.module.module1.activities.ThirdActivity;
+import com.sven.ou.module.test.activities.SecondActivity;
+import com.sven.ou.module.test.activities.ThirdActivity;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

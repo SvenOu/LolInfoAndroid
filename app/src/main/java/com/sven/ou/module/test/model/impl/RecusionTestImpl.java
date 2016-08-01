@@ -1,10 +1,9 @@
-package com.sven.ou.module.module1.model.impl;
+package com.sven.ou.module.test.model.impl;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.sven.ou.common.utils.Logger;
-import com.sven.ou.module.module1.model.RecusionTest;
+import com.sven.ou.module.test.model.RecusionTest;
 
 /**
  * Created by sven-ou on 2016/6/8.

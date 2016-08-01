@@ -1,12 +1,12 @@
-package com.sven.ou.module.module1.presenter.impl;
+package com.sven.ou.module.test.presenter.impl;
 
 import android.support.annotation.NonNull;
 
-import com.sven.ou.module.module1.model.FlavoursTest;
-import com.sven.ou.module.module1.model.RecusionTest;
-import com.sven.ou.module.module1.presenter.MainPresenter;
+import com.sven.ou.module.test.model.FlavoursTest;
+import com.sven.ou.module.test.model.RecusionTest;
+import com.sven.ou.module.test.presenter.MainPresenter;
 import com.sven.ou.navigation.Navigator;
-import com.sven.ou.module.module1.view.MainView;
+import com.sven.ou.module.test.view.MainView;
 
 /**
  * Created by sven-ou on 2016/6/14.

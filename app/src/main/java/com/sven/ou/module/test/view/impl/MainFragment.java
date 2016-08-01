@@ -1,4 +1,4 @@
-package com.sven.ou.module.module1.view.impl;
+package com.sven.ou.module.test.view.impl;
 
 import android.content.Context;
 import android.location.LocationManager;
@@ -7,14 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
-import com.sven.ou.common.executor.RxAsyncHelper;
-import com.sven.ou.module.module1.presenter.MainPresenter;
+import com.sven.ou.module.test.presenter.MainPresenter;
 import com.sven.ou.navigation.Navigator;
-import com.sven.ou.module.module1.view.MainView;
+import com.sven.ou.module.test.view.MainView;
 
 import javax.inject.Inject;
 
@@ -22,8 +20,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import rx.Observable;
-import rx.Subscriber;
 
 public class MainFragment extends BaseFragment implements MainView {
     private static final String TAG = MainFragment.class.getName();

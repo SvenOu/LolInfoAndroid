@@ -1,4 +1,4 @@
-package com.sven.ou.module.module1.view.impl;
+package com.sven.ou.module.test.view.impl;
 
 import android.content.Context;
 import android.location.LocationManager;
@@ -11,8 +11,8 @@ import android.widget.VideoView;
 
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
-import com.sven.ou.module.module1.presenter.ThirdPresenter;
-import com.sven.ou.module.module1.view.ThirdView;
+import com.sven.ou.module.test.presenter.ThirdPresenter;
+import com.sven.ou.module.test.view.ThirdView;
 
 import javax.inject.Inject;
 

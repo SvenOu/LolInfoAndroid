@@ -1,20 +1,17 @@
-package com.sven.ou.module.module1.presenter.impl;
+package com.sven.ou.module.test.presenter.impl;
 
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.VideoView;
 
 import com.sven.ou.common.utils.Logger;
-import com.sven.ou.module.module1.presenter.BasePresenter;
-import com.sven.ou.module.module1.presenter.ThirdPresenter;
+import com.sven.ou.module.test.presenter.BasePresenter;
+import com.sven.ou.module.test.presenter.ThirdPresenter;
 import com.sven.ou.navigation.Navigator;
-import com.sven.ou.module.module1.view.ThirdView;
+import com.sven.ou.module.test.view.ThirdView;
 
 import java.lang.ref.WeakReference;
-
-import javax.inject.Inject;
 
 /**
  * Created by sven-ou on 2016/6/14.

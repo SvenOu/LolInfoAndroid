@@ -3,11 +3,10 @@ package com.sven.ou.demo;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.test.SingleLaunchActivityTestCase;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.sven.ou.R;
-import com.sven.ou.module.module1.activities.MainActivity;
+import com.sven.ou.module.test.activities.MainActivity;
 
 /**
  * Created by sven-ou on 2016/7/14.

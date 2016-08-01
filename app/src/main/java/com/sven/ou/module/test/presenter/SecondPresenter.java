@@ -1,9 +1,9 @@
-package com.sven.ou.module.module1.presenter;
+package com.sven.ou.module.test.presenter;
 
 import android.support.annotation.NonNull;
 import android.view.SurfaceView;
 
-import com.sven.ou.module.module1.view.SecondView;
+import com.sven.ou.module.test.view.SecondView;
 
 /**
  * Created by sven-ou on 2016/7/18.

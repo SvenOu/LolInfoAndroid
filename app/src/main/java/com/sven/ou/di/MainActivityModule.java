@@ -17,12 +17,12 @@ package com.sven.ou.di;
 
 import android.content.Context;
 
-import com.sven.ou.module.module1.activities.MainActivity;
-import com.sven.ou.module.module1.model.FlavoursTest;
-import com.sven.ou.module.module1.model.RecusionTest;
-import com.sven.ou.module.module1.presenter.MainPresenter;
-import com.sven.ou.module.module1.presenter.impl.MainPresenterImpl;
-import com.sven.ou.module.module1.view.impl.MainFragment;
+import com.sven.ou.module.test.activities.MainActivity;
+import com.sven.ou.module.test.model.FlavoursTest;
+import com.sven.ou.module.test.model.RecusionTest;
+import com.sven.ou.module.test.presenter.MainPresenter;
+import com.sven.ou.module.test.presenter.impl.MainPresenterImpl;
+import com.sven.ou.module.test.view.impl.MainFragment;
 import com.sven.ou.navigation.Navigator;
 
 import javax.inject.Named;

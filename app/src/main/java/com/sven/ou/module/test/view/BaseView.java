@@ -1,4 +1,4 @@
-package com.sven.ou.module.module1.view;
+package com.sven.ou.module.test.view;
 
 import android.content.Context;
 

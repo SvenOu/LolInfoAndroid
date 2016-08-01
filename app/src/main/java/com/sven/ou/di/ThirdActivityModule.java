@@ -17,10 +17,10 @@ package com.sven.ou.di;
 
 import android.content.Context;
 
-import com.sven.ou.module.module1.activities.ThirdActivity;
-import com.sven.ou.module.module1.presenter.ThirdPresenter;
-import com.sven.ou.module.module1.presenter.impl.ThirdPresenterImpl;
-import com.sven.ou.module.module1.view.impl.ThirdFragment;
+import com.sven.ou.module.test.activities.ThirdActivity;
+import com.sven.ou.module.test.presenter.ThirdPresenter;
+import com.sven.ou.module.test.presenter.impl.ThirdPresenterImpl;
+import com.sven.ou.module.test.view.impl.ThirdFragment;
 import com.sven.ou.navigation.Navigator;
 
 import javax.inject.Named;

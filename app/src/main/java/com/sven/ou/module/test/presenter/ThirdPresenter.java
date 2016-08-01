@@ -1,9 +1,9 @@
-package com.sven.ou.module.module1.presenter;
+package com.sven.ou.module.test.presenter;
 
 import android.support.annotation.NonNull;
 import android.widget.VideoView;
 
-import com.sven.ou.module.module1.view.ThirdView;
+import com.sven.ou.module.test.view.ThirdView;
 
 /**
  * Created by sven-ou on 2016/7/18.

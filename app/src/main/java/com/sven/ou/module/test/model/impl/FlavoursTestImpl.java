@@ -1,10 +1,9 @@
-package com.sven.ou.module.module1.model.impl;
+package com.sven.ou.module.test.model.impl;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
@@ -13,12 +12,11 @@ import com.sven.ou.module.lol.entity.Authors;
 import com.sven.ou.module.lol.entity.Champion;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.entity.UserArea;
-import com.sven.ou.module.module1.model.FlavoursTest;
+import com.sven.ou.module.test.model.FlavoursTest;
 import com.sven.ou.network.Network;
 
 import java.util.List;
 
-import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 

@@ -1,4 +1,4 @@
-package com.sven.ou.module.module1.presenter.impl;
+package com.sven.ou.module.test.presenter.impl;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
@@ -10,14 +10,12 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.sven.ou.common.base.BaseActivity;
-import com.sven.ou.module.module1.presenter.BasePresenter;
-import com.sven.ou.module.module1.presenter.SecondPresenter;
+import com.sven.ou.module.test.presenter.BasePresenter;
+import com.sven.ou.module.test.presenter.SecondPresenter;
 import com.sven.ou.navigation.Navigator;
-import com.sven.ou.module.module1.view.SecondView;
+import com.sven.ou.module.test.view.SecondView;
 
 import java.io.IOException;
-
-import javax.inject.Inject;
 
 /**
  * Created by sven-ou on 2016/6/14.
