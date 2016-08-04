@@ -9,7 +9,5 @@ public interface FlavoursTest {
      */
     public void printAllVariate();
 
-    public void testObservable();
-
-
+    public void testDaiWaiLolDataApi();
 }

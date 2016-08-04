@@ -6,6 +6,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.FrameLayout;
 
 import com.sven.ou.R;
+import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.test.activities.MainActivity;
 
 /**

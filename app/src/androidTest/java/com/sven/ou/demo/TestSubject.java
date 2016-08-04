@@ -3,6 +3,8 @@ package com.sven.ou.demo;
 import android.test.InstrumentationTestCase;
 import android.util.Log;
 
+import com.sven.ou.common.utils.Logger;
+
 import rx.Observer;
 import rx.subjects.PublishSubject;
 

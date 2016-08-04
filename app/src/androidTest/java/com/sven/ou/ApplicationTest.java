@@ -3,6 +3,8 @@ package com.sven.ou;
 import android.test.ApplicationTestCase;
 import android.util.Log;
 
+import com.sven.ou.common.utils.Logger;
+
 import java.util.List;
 
 

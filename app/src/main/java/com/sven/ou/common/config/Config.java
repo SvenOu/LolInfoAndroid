@@ -19,17 +19,17 @@ public class Config {
     /**
      *公共版战绩令牌
      */
-    public static final String PUBLICK_LOL_REQUEST_TOKEN = "LKDKR-RUNSG-NESER-FJNMC";
+    public static final String PUBLICK_LOL_REQUEST_TOKEN = "JCQOH-WZJEH-IQAFK-FXKBP";
 
     /**
      * 视频令牌
      */
-    public static final String VIDEO_REQUEST_TOKEN = "KBANG-PBAKY-GDBTB-JQQBH";
+    public static final String VIDEO_REQUEST_TOKEN = "NANNZ-LMYSQ-ZVKHL-DCZVE";
 
     /**
      * 触手战绩令牌（云API）
      */
-    public static final String TENTACLE_LOL_REQUEST_TOKEN = "JXZGG-IJJEU-PDPAM-DAJWF";
+    public static final String TENTACLE_LOL_REQUEST_TOKEN = "MCOHY-CMBOY-DJVNA-BMKKF";
 
 
     public static String getDaiWanLolDataUrl(){

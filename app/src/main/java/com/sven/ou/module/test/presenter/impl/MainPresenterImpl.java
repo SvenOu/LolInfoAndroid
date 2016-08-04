@@ -32,7 +32,7 @@ public class MainPresenterImpl implements MainPresenter {
     public void ini(){
         recusionTest.testAll();
         flavoursTest.printAllVariate();
-        flavoursTest.testObservable();
+        flavoursTest.testDaiWaiLolDataApi();
     }
 
     @Override

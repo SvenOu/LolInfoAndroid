@@ -8,7 +8,7 @@ import com.sven.ou.common.utils.Logger;
 import rx.Observer;
 
 /**
- * 用着此抽象类统一处理错误信息和完成信息
+ * 用此抽象类统一处理错误信息和完成信息
  */
 public abstract class LolObserver<T> implements Observer<T>{
     private static final String TAG = LolObserver.class.getSimpleName();
@@ -25,6 +25,6 @@ public abstract class LolObserver<T> implements Observer<T>{
 
     @Override
     public void onError(Throwable e) {
-        Toast.makeText(applicationContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(applicationContext, e.getMessage(), Toast.LENGTH_LONG).show();
     }
 }

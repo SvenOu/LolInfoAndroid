@@ -1,7 +1,7 @@
 package com.sven.ou.module.lol.entity;
 
 /**
- * Created by sven-ou on 2016/7/29.
+ * 解說者信息
  */
 public class Authors {
     private String id;

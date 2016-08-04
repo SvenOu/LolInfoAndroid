@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 /**
- * Created by sven-ou on 2016/7/27.
+ * 英雄联盟国服视频API
  */
 public interface DaiWanLolVideoApi{
     /**
