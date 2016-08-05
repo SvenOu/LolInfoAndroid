@@ -19,9 +19,9 @@ import android.content.Context;
 import android.location.LocationManager;
 
 import com.sven.ou.AndroidApplication;
-import com.sven.ou.module.test.model.FlavoursTest;
+import com.sven.ou.module.test.model.LolApiTest;
 import com.sven.ou.module.test.model.RecusionTest;
-import com.sven.ou.module.test.model.impl.FlavoursTestImpl;
+import com.sven.ou.module.test.model.impl.LolApiTestImpl;
 import com.sven.ou.module.test.model.impl.RecusionTestImpl;
 
 import javax.inject.Singleton;
@@ -63,7 +63,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    FlavoursTest provideFlavoursTest(Context applicationContext) {
-        return  new FlavoursTestImpl(applicationContext);
+    LolApiTest provideLolApiTest(Context applicationContext) {
+        return  new LolApiTestImpl(applicationContext);
     }
 }

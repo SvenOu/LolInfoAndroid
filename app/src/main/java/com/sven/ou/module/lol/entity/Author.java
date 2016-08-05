@@ -3,7 +3,7 @@ package com.sven.ou.module.lol.entity;
 /**
  * 解說者信息
  */
-public class Authors {
+public class Author {
     private String id;
 
     /**
@@ -91,7 +91,7 @@ public class Authors {
 
     @Override
     public String toString() {
-        return "Authors{" +
+        return "Author{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", img='" + img + '\'' +

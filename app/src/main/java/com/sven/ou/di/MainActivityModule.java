@@ -18,7 +18,7 @@ package com.sven.ou.di;
 import android.content.Context;
 
 import com.sven.ou.module.test.activities.MainActivity;
-import com.sven.ou.module.test.model.FlavoursTest;
+import com.sven.ou.module.test.model.LolApiTest;
 import com.sven.ou.module.test.model.RecusionTest;
 import com.sven.ou.module.test.presenter.MainPresenter;
 import com.sven.ou.module.test.presenter.impl.MainPresenterImpl;
@@ -49,7 +49,7 @@ public class MainActivityModule {
     }
 
     @Provides
-    MainPresenter provideMainPresenter(RecusionTest recusionTest, FlavoursTest flavoursTest, Navigator navigator) {
-        return new MainPresenterImpl(recusionTest, flavoursTest, navigator);
+    MainPresenter provideMainPresenter(RecusionTest recusionTest, LolApiTest lolApiTest, Navigator navigator) {
+        return new MainPresenterImpl(recusionTest, lolApiTest, navigator);
     }
 }

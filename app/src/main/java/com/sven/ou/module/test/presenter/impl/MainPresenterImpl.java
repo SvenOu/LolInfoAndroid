@@ -2,7 +2,7 @@ package com.sven.ou.module.test.presenter.impl;
 
 import android.support.annotation.NonNull;
 
-import com.sven.ou.module.test.model.FlavoursTest;
+import com.sven.ou.module.test.model.LolApiTest;
 import com.sven.ou.module.test.model.RecusionTest;
 import com.sven.ou.module.test.presenter.MainPresenter;
 import com.sven.ou.navigation.Navigator;
@@ -16,10 +16,10 @@ public class MainPresenterImpl implements MainPresenter {
     private RecusionTest recusionTest;
     private MainView mainView;
     private Navigator navigator;
-    private FlavoursTest flavoursTest;
+    private LolApiTest lolApiTest;
 
-    public MainPresenterImpl(RecusionTest recusionTest, FlavoursTest flavoursTest, Navigator navigator) {
-        this.flavoursTest = flavoursTest;
+    public MainPresenterImpl(RecusionTest recusionTest, LolApiTest lolApiTest, Navigator navigator) {
+        this.lolApiTest = lolApiTest;
         this.recusionTest = recusionTest;
         this.navigator = navigator;
     }
@@ -31,8 +31,8 @@ public class MainPresenterImpl implements MainPresenter {
 
     public void ini(){
         recusionTest.testAll();
-        flavoursTest.printAllVariate();
-        flavoursTest.testDaiWaiLolDataApi();
+        lolApiTest.testDaiWaiLolVideoApi();
+        lolApiTest.testDaiWaiLolDataApi();
     }
 
     @Override
