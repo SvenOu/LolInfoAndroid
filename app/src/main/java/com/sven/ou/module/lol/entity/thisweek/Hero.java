@@ -41,6 +41,11 @@ public class Hero {
      */
     private Image image;
 
+    /**
+     *有后台的map转换过来的key
+     */
+    private String keyHero;
+
     public void setId(String id){
         this.id = id;
     }
@@ -85,5 +90,13 @@ public class Hero {
     }
     public Image getImage(){
         return this.image;
+    }
+
+    public String getKeyHero() {
+        return keyHero;
+    }
+
+    public void setKeyHero(String keyHero) {
+        this.keyHero = keyHero;
     }
 }

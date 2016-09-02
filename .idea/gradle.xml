@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ActiveAndroid-lib" />
             <option value="$PROJECT_DIR$/android_univesal_image_loader_library_sv" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dexter" />
@@ -16,6 +17,7 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ActiveAndroid-lib" />
             <option value="$PROJECT_DIR$/android_univesal_image_loader_library_sv" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dexter" />

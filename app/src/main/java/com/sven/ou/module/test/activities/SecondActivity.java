@@ -15,7 +15,7 @@ public class SecondActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_main);
+        setContentView(R.layout.test_main);
         setTitle(R.string.second_activity);
         if(null == savedInstanceState){
             addFragment(R.id.fra_container, new SecondFragment());

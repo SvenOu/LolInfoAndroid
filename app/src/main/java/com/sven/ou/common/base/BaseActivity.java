@@ -19,10 +19,11 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.sven.ou.AndroidApplication;
+import com.sven.ou.LolApplication;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
 import dagger.ObjectGraph;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -32,9 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Create the activity graph by .plus-ing our modules onto the application graph.
-        AndroidApplication application = (AndroidApplication) getApplication();
+        LolApplication application = (LolApplication) getApplication();
         activityGraph = application.getApplicationGraph().plus(getModules().toArray());
         // Inject ourselves so subclasses will have dependencies fulfilled when this method returns.
         activityGraph.inject(this);
@@ -58,4 +58,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void inject(Object object) {
         activityGraph.inject(object);
     }
+
 }

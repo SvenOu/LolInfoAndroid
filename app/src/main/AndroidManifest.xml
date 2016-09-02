@@ -26,7 +26,7 @@
     -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- This app has permission to register and receive data message. -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <supports-screens
         android:anyDensity="true"
@@ -38,14 +38,15 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".LolApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:name=".AndroidApplication"
-        android:theme="@style/AppTheme">
 
-        <activity android:name=".module.test.activities.MainActivity">
+        android:label="@string/app_name"
+        android:theme="@style/Theme.LolInfo">
+
+        <activity android:name=".module.lol.activities.MainViewActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,8 +54,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".module.test.activities.SecondActivity"></activity>
-        <activity android:name=".module.test.activities.ThirdActivity"></activity>
+        <activity
+            android:name=".module.test.activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.lol.activities.CheeseDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.test.activities.SecondActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.test.activities.ThirdActivity"
+            android:screenOrientation="portrait" />
 
         <!--配置个推 -->
         <receiver
@@ -65,19 +76,19 @@
             </intent-filter>
         </receiver>
         <!--end 配置个推 -->
-<!--
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}" />
+        <!--
+                <meta-data
+                    android:name="UMENG_CHANNEL"
+                    android:value="${UMENG_CHANNEL_VALUE}" />
 
-        <meta-data
-            android:name="APP_MODE"
-            android:value="${APP_MODE}" />
+                <meta-data
+                    android:name="APP_MODE"
+                    android:value="${APP_MODE}" />
 
-        <meta-data
-            android:name="IS_DEVELOP_MODE"
-            android:value="${IS_DEVELOP_MODE}" />
--->
+                <meta-data
+                    android:name="IS_DEVELOP_MODE"
+                    android:value="${IS_DEVELOP_MODE}" />
+        -->
     </application>
 
 </manifest>

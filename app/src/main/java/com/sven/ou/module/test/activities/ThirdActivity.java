@@ -15,7 +15,7 @@ public class ThirdActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_third);
+        setContentView(R.layout.test_third);
         setTitle(R.string.third_activity);
         if(null == savedInstanceState){
             addFragment(R.id.fra_container, new ThirdFragment());

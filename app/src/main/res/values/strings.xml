@@ -14,4 +14,32 @@
     <string name="button3">button3</string>
     <string name="button4">button4</string>
     <string name="button5">button5</string>
+
+    <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
+    cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
+    bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
+    cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
+    the big cheese.</string>
+    <string name="checkin">Checkin</string>
+
+
+    <string name="menu_night_mode">Night mode</string>
+    <string name="menu_night_mode_system">Follow system</string>
+    <string name="menu_night_mode_day">Day (always)</string>
+    <string name="menu_night_mode_night">Night (always)</string>
+    <string name="menu_night_mode_auto">Auto</string>
+
+    <string name="news">资讯</string>
+    <string name="friends">好友</string>
+    <string name="discover">发现</string>
+    <string name="my">我</string>
+    <string name="setting">设置</string>
+    <string name="about_us">关于我们</string>
+
+    <string name="author_info">解说信息</string>
+    <string name="author_video">解说视频</string>
+    <string name="newest_video">最新视频</string>
+    <string name="hero_video">英雄视频</string>
+    <string name="video_search">视频查找</string>
+
 </resources>

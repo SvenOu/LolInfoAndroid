@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * 解說者信息
  */
-public class Author {
+public class Author{
     private String id;
 
     /**

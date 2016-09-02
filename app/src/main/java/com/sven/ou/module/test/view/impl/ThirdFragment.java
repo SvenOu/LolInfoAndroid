@@ -17,9 +17,7 @@ import com.sven.ou.module.test.view.ThirdView;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class ThirdFragment extends BaseFragment implements ThirdView{
     private static final String TAG = ThirdFragment.class.getName();
@@ -33,8 +31,6 @@ public class ThirdFragment extends BaseFragment implements ThirdView{
     @BindView(R.id.pausevideoplayer) Button btnPauseVideo;
     @BindView(R.id.videoView) VideoView videoView;
 
-    private Unbinder unbinder;
-
     @OnClick(R.id.playvideoplayer)
     public void playVideo(View view) {
         mThirdPresenter.playVideo();
@@ -47,10 +43,9 @@ public class ThirdFragment extends BaseFragment implements ThirdView{
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fra_third, container, false);
-        unbinder = ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.fra_test_third, container, false);
         return view;
     }
 
@@ -85,7 +80,6 @@ public class ThirdFragment extends BaseFragment implements ThirdView{
     public void onDestroy() {
         super.onDestroy();
         mThirdPresenter.destroy();
-        unbinder.unbind();
     }
 
 }

@@ -17,9 +17,7 @@ import com.sven.ou.module.test.view.MainView;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class MainFragment extends BaseFragment implements MainView {
     private static final String TAG = MainFragment.class.getName();
@@ -35,13 +33,10 @@ public class MainFragment extends BaseFragment implements MainView {
     @BindView(R.id.button4) Button button4;
     @BindView(R.id.button5) Button button5;
 
-    private Unbinder unbinder;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fra_main, container, false);
-        unbinder = ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.fra_test_main, container, false);
         return view;
     }
 
@@ -82,7 +77,6 @@ public class MainFragment extends BaseFragment implements MainView {
     public void onDestroy() {
         super.onDestroy();
         mMainPresenter.destroy();
-        unbinder.unbind();
     }
 
     @Override

@@ -17,9 +17,7 @@ import com.sven.ou.module.test.view.SecondView;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class SecondFragment extends BaseFragment implements SecondView{
     private static final String TAG = SecondFragment.class.getName();
@@ -33,9 +31,6 @@ public class SecondFragment extends BaseFragment implements SecondView{
     @BindView(R.id.pausevideoplayer) Button btnPauseVideo;
     @BindView(R.id.surfaceview) SurfaceView surfaceView;
 
-    private Unbinder unbinder;
-
-
     @OnClick(R.id.playvideoplayer)
     public void playVideo(View view) {
         smScondPresenter.playVideo();
@@ -48,10 +43,9 @@ public class SecondFragment extends BaseFragment implements SecondView{
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fra_second, container, false);
-        unbinder = ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.fra_test_second, container, false);
         return view;
     }
 
@@ -86,7 +80,6 @@ public class SecondFragment extends BaseFragment implements SecondView{
     public void onDestroy() {
         super.onDestroy();
         smScondPresenter.destroy();
-        unbinder.unbind();
     }
 
 }

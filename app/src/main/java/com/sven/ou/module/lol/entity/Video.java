@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by sven-ou on 2016/8/5.
  */
-public class Video {
+public class Video{
     /**
      * 文章唯一ID
      */
@@ -260,7 +262,7 @@ public class Video {
                 ", tag='" + tag + '\'' +
                 ", createdate='" + createdate + '\'' +
                 ", catalog='" + catalog + '\'' +
-                ", author=" + author +
+                ", video=" + author +
                 ", source='" + source + '\'' +
                 ", comments='" + comments + '\'' +
                 ", headlines=" + headlines +

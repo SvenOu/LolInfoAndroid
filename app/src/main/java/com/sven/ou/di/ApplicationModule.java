@@ -18,7 +18,7 @@ package com.sven.ou.di;
 import android.content.Context;
 import android.location.LocationManager;
 
-import com.sven.ou.AndroidApplication;
+import com.sven.ou.LolApplication;
 import com.sven.ou.module.test.model.LolApiTest;
 import com.sven.ou.module.test.model.RecusionTest;
 import com.sven.ou.module.test.model.impl.LolApiTestImpl;
@@ -37,9 +37,9 @@ import static android.content.Context.LOCATION_SERVICE;
  */
 @Module(library = true)
 public class ApplicationModule {
-    private final AndroidApplication application;
+    private final LolApplication application;
 
-    public ApplicationModule(AndroidApplication application) {
+    public ApplicationModule(LolApplication application) {
         this.application = application;
     }
 
