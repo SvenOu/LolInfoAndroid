@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/act_main_view"/>
+    <include layout="@layout/act_main_content"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

@@ -15,9 +15,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,10 +26,10 @@ import com.lsjwzh.widget.recyclerviewpager.LoopRecyclerViewPager;
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseActivity;
+import com.sven.ou.common.component.DotsView;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
 import com.sven.ou.di.MainViewActivityModule;
-import com.sven.ou.module.lol.adapters.NewestVideoViewAdapter;
 import com.sven.ou.module.lol.adapters.WeekFreeHerosAdapter;
 import com.sven.ou.module.lol.entity.thisweek.Hero;
 import com.sven.ou.module.lol.oberver.LolObserver;
@@ -47,7 +47,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,11 +59,12 @@ public class MainViewActivity extends BaseActivity {
 //    LoopRecyclerViewPager rvp_weekFreeHeros;
     private DrawerLayout mDrawerLayout;
     private WeekFreeHerosAdapter weekFreeHerosAdapter;
+    private int currentPage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.act_main);
         ButterKnife.bind(this);
 
 //        rvp_weekFreeHeros = (LoopRecyclerViewPager) findViewById(R.id.weekFreeHeroList);
@@ -87,6 +87,7 @@ public class MainViewActivity extends BaseActivity {
         if (viewPager != null) {
             setupViewPager(viewPager);
         }
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +121,15 @@ public class MainViewActivity extends BaseActivity {
                 rvp_weekFreeHeros.setAdapter(weekFreeHerosAdapter);
             }
         });
+    }
+
+    private int caculateCurrentPage(int total){
+        if(currentPage < total){
+            currentPage ++;
+        }else {
+            currentPage = 0;
+        }
+        return currentPage;
     }
 
     @Override
