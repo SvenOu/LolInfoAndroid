@@ -56,6 +56,7 @@ public class MainViewActivity extends BaseActivity {
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
     @BindView(R.id.viewpager) ViewPager viewPager;
+    @BindView(R.id.tabs) TabLayout tabLayout;
 
     private WeekFreeHerosAdapter weekFreeHerosAdapter;
 
@@ -92,7 +93,6 @@ public class MainViewActivity extends BaseActivity {
             }
         });
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         authorInfoPresenter.getWeekFreeHero(new LolObserver<DaiWanLolResult<List<Map<String, Hero>>>>(applicationContext) {
