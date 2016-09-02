@@ -17,16 +17,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.lsjwzh.widget.recyclerviewpager.LoopRecyclerViewPager;
-import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseActivity;
-import com.sven.ou.common.component.DotsView;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
 import com.sven.ou.di.MainViewActivityModule;
@@ -56,10 +53,11 @@ public class MainViewActivity extends BaseActivity {
     @Inject Context applicationContext;
     @Inject AuthorInfoPresenter authorInfoPresenter;
     @BindView(R.id.weekFreeHeroList) LoopRecyclerViewPager rvp_weekFreeHeros;
-//    LoopRecyclerViewPager rvp_weekFreeHeros;
-    private DrawerLayout mDrawerLayout;
+    @BindView(R.id.nav_view) NavigationView navigationView;
+    @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
+    @BindView(R.id.viewpager) ViewPager viewPager;
+
     private WeekFreeHerosAdapter weekFreeHerosAdapter;
-    private int currentPage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +65,6 @@ public class MainViewActivity extends BaseActivity {
         setContentView(R.layout.act_main);
         ButterKnife.bind(this);
 
-//        rvp_weekFreeHeros = (LoopRecyclerViewPager) findViewById(R.id.weekFreeHeroList);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -76,14 +73,11 @@ public class MainViewActivity extends BaseActivity {
 
         ab.setDisplayHomeAsUpEnabled(true);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
         }
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         if (viewPager != null) {
             setupViewPager(viewPager);
         }
@@ -121,15 +115,6 @@ public class MainViewActivity extends BaseActivity {
                 rvp_weekFreeHeros.setAdapter(weekFreeHerosAdapter);
             }
         });
-    }
-
-    private int caculateCurrentPage(int total){
-        if(currentPage < total){
-            currentPage ++;
-        }else {
-            currentPage = 0;
-        }
-        return currentPage;
     }
 
     @Override
