@@ -43,7 +43,7 @@ public class AuthorRecycleViewAdapter
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+                .inflate(R.layout.author_info_list_item, parent, false);
         view.setBackgroundResource(mBackground);
         return new ViewHolder(view);
     }
@@ -83,7 +83,7 @@ public class AuthorRecycleViewAdapter
             super(view);
             mView = view;
             mImageView = (ImageView) view.findViewById(R.id.avatar);
-            mTextView = (TextView) view.findViewById(android.R.id.text1);
+            mTextView = (TextView) view.findViewById(R.id.authorDesc);
         }
 
         @Override

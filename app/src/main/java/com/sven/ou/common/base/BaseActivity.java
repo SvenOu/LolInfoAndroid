@@ -17,7 +17,11 @@ package com.sven.ou.common.base;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.sven.ou.LolApplication;
 
@@ -40,6 +44,28 @@ public abstract class BaseActivity extends AppCompatActivity {
         activityGraph.inject(this);
     }
 
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        initContentView();
+    }
+
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+        initContentView();
+    }
+
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
+        super.setContentView(view, params);
+        initContentView();
+    }
+
+    private void initContentView() {
+        ButterKnife.bind(this);
+    }
+
     /**
      * Adds a {@link Fragment} to this activity's layout.
      *
@@ -50,6 +76,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         android.support.v4.app.FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(containerViewId, fragment);
         fragmentTransaction.commit();
+    }
+    protected void toast(String msg){
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+    protected void toast(int msg){
+        toast(getString(msg));
     }
 
     protected abstract List<Object> getModules();

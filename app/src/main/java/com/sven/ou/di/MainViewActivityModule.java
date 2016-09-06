@@ -20,18 +20,16 @@ import android.content.Context;
 import com.sven.ou.module.lol.activities.MainViewActivity;
 import com.sven.ou.module.lol.presenter.AuthorInfoPresenter;
 import com.sven.ou.module.lol.presenter.NewestVideoPresenter;
+import com.sven.ou.module.lol.presenter.SearchVideoDialogPresenter;
 import com.sven.ou.module.lol.presenter.impl.AuthorInfoPresenterImpl;
 import com.sven.ou.module.lol.presenter.impl.NewestVideoPresenterImpl;
-import com.sven.ou.module.lol.view.impl.AuthorInfoFragment;
-import com.sven.ou.module.lol.view.impl.AuthorVideoFragment;
-import com.sven.ou.module.lol.view.impl.HeroVideoFragment;
-import com.sven.ou.module.lol.view.impl.NewestVideoFragment;
-import com.sven.ou.module.lol.view.impl.VideoSearchFragment;
-import com.sven.ou.module.test.model.LolApiTest;
-import com.sven.ou.module.test.model.RecusionTest;
-import com.sven.ou.module.test.presenter.MainPresenter;
-import com.sven.ou.module.test.presenter.impl.MainPresenterImpl;
-import com.sven.ou.navigation.Navigator;
+import com.sven.ou.module.lol.presenter.impl.SearchVideoDialogPresenterImpl;
+import com.sven.ou.module.lol.view.AuthorInfoFragment;
+import com.sven.ou.module.lol.view.AuthorVideoFragment;
+import com.sven.ou.module.lol.view.HeroVideoFragment;
+import com.sven.ou.module.lol.view.NewestVideoFragment;
+import com.sven.ou.module.lol.view.SearchVideoDialog;
+import com.sven.ou.module.lol.view.VideoSearchFragment;
 
 import javax.inject.Named;
 
@@ -71,5 +69,14 @@ public class MainViewActivityModule {
     @Provides
     NewestVideoPresenter provideNewestVideoPresenter(Context context) {
         return new NewestVideoPresenterImpl(context);
+    }
+
+    @Provides
+    SearchVideoDialogPresenter provideSearchVideoDialogPresenter(Context context) {
+        return new SearchVideoDialogPresenterImpl(context);
+    }
+    @Provides
+    SearchVideoDialog provideSearchVideoDialog(@Named("activityContext")Context context, SearchVideoDialogPresenter searchVideoDialogPresenter) {
+        return new SearchVideoDialog(context, searchVideoDialogPresenter);
     }
 }

@@ -14,59 +14,51 @@
  * limitations under the License.
  */
 
-package com.sven.ou.module.lol.view.impl;
+package com.sven.ou.module.lol.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.paginate.Paginate;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
-import com.sven.ou.module.lol.activities.CheeseDetailActivity;
-import com.sven.ou.module.lol.adapters.AuthorRecycleViewAdapter;
-import com.sven.ou.module.lol.entity.Author;
-import com.sven.ou.module.lol.entity.Cheeses;
+import com.sven.ou.module.lol.adapters.NewestVideoViewAdapter;
+import com.sven.ou.module.lol.entity.Video;
 import com.sven.ou.module.lol.oberver.LolObserver;
-import com.sven.ou.module.lol.presenter.AuthorInfoPresenter;
-import com.sven.ou.module.lol.view.AuthorInfoView;
+import com.sven.ou.module.lol.presenter.NewestVideoPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbacks, AuthorInfoView{
+public class NewestVideoFragment extends BaseFragment implements Paginate.Callbacks {
 
-    private static final String TAG = AuthorInfoFragment.class.getSimpleName();
+    private static final String TAG = NewestVideoFragment.class.getSimpleName();
     private Paginate paginate;
-    private AuthorRecycleViewAdapter authorRecycleViewAdapter;
+    private NewestVideoViewAdapter newestVideoViewAdapter;
     private View rootView;
-    @BindView(R.id.recyclerview) RecyclerView authorInfoRecyclerview;
+    @BindView(R.id.newestVideoRecyclerview) RecyclerView newestVideoRecyclerview;
     @Inject Context applicationContext;
-    @Inject AuthorInfoPresenter authorInfoPresenter;
+    @Inject NewestVideoPresenter newestVideoPresenter;
+    private static final int ROW_VIEW_COUNT = 2;
 
     @Nullable
     @Override
     public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(null == rootView){
             rootView = inflater.inflate(
-                    R.layout.fragment_author_info, container, false);
+                    R.layout.fra_newest_video, container, false);
         }
         return rootView;
     }
@@ -76,12 +68,11 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
      */
     @Override
     public synchronized void onLoadMore() {
-        authorInfoPresenter.loadNextAuthorInfoPage(new LolObserver<DaiWanLolResult<List<Author>>>(applicationContext) {
+        newestVideoPresenter.loadNextNewestVideoPage(new LolObserver<DaiWanLolResult<List<Video>>>(applicationContext) {
             @Override
-            public void onNext(DaiWanLolResult<List<Author>> listDaiWanLolResult) {
-                List<Author> authorList = listDaiWanLolResult.getData();
-                Logger.e(TAG , listDaiWanLolResult.toString());
-                authorRecycleViewAdapter.add(authorList);
+            public void onNext(DaiWanLolResult<List<Video>> listDaiWanLolResult) {
+                List<Video> authorList = listDaiWanLolResult.getData();
+                newestVideoViewAdapter.add(authorList);
             }
         });
     }
@@ -94,7 +85,7 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
      */
     @Override
     public synchronized boolean isLoading() {
-        return authorInfoPresenter.isLoadingPageData();
+        return newestVideoPresenter.isLoadingPageData();
     }
 
     /**
@@ -105,7 +96,7 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
      */
     @Override
     public boolean hasLoadedAllItems() {
-        return authorInfoPresenter.hasLoadedAllIPages();
+        return newestVideoPresenter.hasLoadedAllIPages();
     }
 
     @Override
@@ -119,10 +110,10 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
         if (paginate != null) {
             paginate.unbind();
         }
-        authorInfoRecyclerview.setLayoutManager(new LinearLayoutManager(authorInfoRecyclerview.getContext()));
-        authorRecycleViewAdapter = new AuthorRecycleViewAdapter(getActivity(), new ArrayList(0));
-        authorInfoRecyclerview.setAdapter(authorRecycleViewAdapter);
+        newestVideoRecyclerview.setLayoutManager(new GridLayoutManager(applicationContext, ROW_VIEW_COUNT));
+        newestVideoViewAdapter = new NewestVideoViewAdapter(getActivity(), new ArrayList(0));
+        newestVideoRecyclerview.setAdapter(newestVideoViewAdapter);
 
-        paginate = Paginate.with(authorInfoRecyclerview, this).build();
+        paginate = Paginate.with(newestVideoRecyclerview, this).build();
     }
 }

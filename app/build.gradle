@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.2'
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         applicationId "com.sven.ou"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.1.0"
         manifestPlaceholders = [
@@ -85,11 +85,11 @@ dependencies {
     //junit
     testCompile 'junit:junit:4.12'
     //appcompat-v7
-    compile 'com.android.support:appcompat-v7:24.+'
+    compile 'com.android.support:appcompat-v7:23.+'
     //support design
-    compile 'com.android.support:design:24.+'
-    compile 'com.android.support:cardview-v7:24.+'
-    compile 'com.android.support:recyclerview-v7:24.+'
+    compile 'com.android.support:design:23.+'
+    compile 'com.android.support:cardview-v7:23.+'
+    compile 'com.android.support:recyclerview-v7:23.+'
     compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.1'
     compile 'com.github.markomilos:paginate:0.5.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
@@ -116,8 +116,11 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.7'
     compile 'io.reactivex:rxandroid:1.2.1'
     //个推
-    compile 'com.getui:sdk:+'
+    compile 'com.getui:sdk:2.9.0.0'
+    //mutidex
+    compile 'com.android.support:multidex:1.0.0'
     //other
     compile project(':android_univesal_image_loader_library_sv')
     compile project(':dexter')
+    compile project(':ActiveAndroid-lib')
 }

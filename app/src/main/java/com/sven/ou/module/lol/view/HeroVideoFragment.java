@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sven.ou.module.lol.view.impl;
+package com.sven.ou.module.lol.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -39,13 +39,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class VideoSearchFragment extends BaseFragment {
+public class HeroVideoFragment extends BaseFragment {
 
     @Nullable
     @Override
     public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView rv = (RecyclerView) inflater.inflate(
-                R.layout.fragment_cheese_list, container, false);
+                R.layout.fra_cheese_list, container, false);
         setupRecyclerView(rv);
         return rv;
     }

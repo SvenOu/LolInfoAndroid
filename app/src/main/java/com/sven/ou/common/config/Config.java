@@ -5,6 +5,19 @@ package com.sven.ou.common.config;
  */
 public class Config {
 
+    /**
+     * 测试模式
+     */
+    private static final String TEST_MODE = "TEST";
+    /**
+     * 正式版发布
+     */
+    private static final String PROD_MODE = "PROD";
+
+    /**
+     * change to "PROD" if need to publish the app.
+     */
+    private static final String CURRENT_MODE = TEST_MODE;
 
     /**
      * 带玩英雄联盟服务器 数据Api
@@ -19,12 +32,12 @@ public class Config {
     /**
      *公共版战绩令牌
      */
-    public static final String PUBLICK_LOL_REQUEST_TOKEN = "92144-347D4-09A45-49909";
+    public static final String PUBLICK_LOL_REQUEST_TOKEN = "5B618-FB6F5-7B74A-411C5";
 
     /**
      * 视频令牌
      */
-    public static final String VIDEO_REQUEST_TOKEN = "62E65-A9459-47965-587EE";
+    public static final String VIDEO_REQUEST_TOKEN = "E8A8B-8084B-A88E4-BBA87";
 
 //    /**
 //     * 触手战绩令牌（云API）
@@ -41,5 +54,17 @@ public class Config {
 
     public static boolean isDevelopMode(){
         return true;
+    }
+
+    public static String getDataBasePrefix(){
+        String testPrefix = "test_";
+        String proPrefix = "pro_";
+
+        if (CURRENT_MODE.equalsIgnoreCase(PROD_MODE))
+            return proPrefix;
+        else if (CURRENT_MODE.equalsIgnoreCase(TEST_MODE))
+            return testPrefix;
+        else
+            return testPrefix;
     }
 }

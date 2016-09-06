@@ -20,7 +20,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -44,7 +43,7 @@ public class CheeseDetailActivity extends BaseActivity {
         Intent intent = getIntent();
         final String cheeseName = intent.getStringExtra(EXTRA_NAME);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -58,12 +57,6 @@ public class CheeseDetailActivity extends BaseActivity {
     private void loadBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
         ImageLoader.getInstance().displayImage("drawable://"+ Cheeses.getRandomCheeseDrawable(), imageView);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sample_actions, menu);
-        return true;
     }
 
     @Override

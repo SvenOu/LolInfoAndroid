@@ -40,12 +40,12 @@
     <application
         android:name=".LolApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_icon"
 
         android:label="@string/app_name"
         android:theme="@style/Theme.LolInfo">
 
-        <activity android:name=".module.lol.activities.MainViewActivity"
+        <activity android:name=".module.launch.activities.AppStartActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,6 +53,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".module.lol.activities.MainViewActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".module.test.activities.MainActivity"
@@ -89,6 +92,10 @@
                     android:name="IS_DEVELOP_MODE"
                     android:value="${IS_DEVELOP_MODE}" />
         -->
+        <!--配置active android-->
+        <meta-data android:name="AA_SERIALIZERS"
+            android:value="ou.sven.com.activeandroidtest.db.UtilDateSerializer" />
+        <!--end 配置active android -->
     </application>
 
 </manifest>
