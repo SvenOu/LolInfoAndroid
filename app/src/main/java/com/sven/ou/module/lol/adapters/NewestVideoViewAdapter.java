@@ -28,6 +28,7 @@ public class NewestVideoViewAdapter
     private final TypedValue mTypedValue = new TypedValue();
     private int mBackground;
     private List<Video> videos;
+    private CallBack callBack;
 
     public void add(List<Video> videos) {
         int previousDataSize = this.videos.size();
@@ -46,10 +47,11 @@ public class NewestVideoViewAdapter
         return videos.get(position);
     }
 
-    public NewestVideoViewAdapter(Context context, List<Video> videos) {
+    public NewestVideoViewAdapter(Context context, List<Video> videos, CallBack callBack) {
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
         mBackground = mTypedValue.resourceId;
         this.videos = videos;
+        this.callBack = callBack;
     }
 
     @Override
@@ -74,8 +76,7 @@ public class NewestVideoViewAdapter
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2016/8/31
-                Toast.makeText(LolApplication.instance.getApplicationContext(), holder.video.getTitle(), Toast.LENGTH_SHORT).show();
+                callBack.onItemClick(holder);
             }
         });
         ImageLoader.getInstance().displayImage(holder.video.getImg(), holder.mImageView);
@@ -88,7 +89,6 @@ public class NewestVideoViewAdapter
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public Video video;
-
         public final View mView;
         public final ImageView mImageView;
         public final TextView mTextView;
@@ -104,5 +104,9 @@ public class NewestVideoViewAdapter
         public String toString() {
             return super.toString() + " '" + mTextView.getText();
         }
+    }
+
+    public interface CallBack{
+        void onItemClick(ViewHolder viewHolder);
     }
 }

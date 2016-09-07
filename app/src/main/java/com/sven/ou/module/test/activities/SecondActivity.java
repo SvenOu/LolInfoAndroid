@@ -18,7 +18,7 @@ public class SecondActivity extends BaseActivity {
         setContentView(R.layout.test_main);
         setTitle(R.string.second_activity);
         if(null == savedInstanceState){
-            addFragment(R.id.fra_container, new SecondFragment());
+            addFragment(R.id.fra_container, new SecondFragment(null));
         }
     }
 

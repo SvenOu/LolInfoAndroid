@@ -48,19 +48,19 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
     private static final String TAG = AuthorInfoFragment.class.getSimpleName();
     private Paginate paginate;
     private AuthorRecycleViewAdapter authorRecycleViewAdapter;
-    private View rootView;
     @BindView(R.id.recyclerview) RecyclerView authorInfoRecyclerview;
     @Inject Context applicationContext;
     @Inject AuthorInfoPresenter authorInfoPresenter;
 
+    public AuthorInfoFragment(String fragmentId) {
+        super(fragmentId);
+    }
+
     @Nullable
     @Override
     public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(null == rootView){
-            rootView = inflater.inflate(
-                    R.layout.fra_author_info, container, false);
-        }
-        return rootView;
+        return  inflater.inflate(
+                R.layout.fra_author_info, container, false);
     }
 
     /**

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.sven.ou.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchVideoFilterAdapter extends BaseAdapter implements Filterable {
@@ -100,4 +101,8 @@ public class SearchVideoFilterAdapter extends BaseAdapter implements Filterable 
         public List<String> onGetFilterList(String input);
     }
 
+    public void clearFilters() {
+        this.filterList = new ArrayList<String>(0);
+        this.notifyDataSetChanged();
+    }
 }

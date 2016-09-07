@@ -27,6 +27,7 @@
             android:paddingLeft="42dp"
             android:paddingRight="37dp"
             android:paddingTop="10dp"
+            android:completionThreshold="1"
             android:hint="@string/search_video"
             android:textColorHint="@color/secondary_text"
             android:textColor="@color/secondary_text" />

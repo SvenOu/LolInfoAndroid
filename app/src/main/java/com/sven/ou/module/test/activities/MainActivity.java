@@ -18,7 +18,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.test_main);
         setTitle(R.string.choose_play_action);
         if(null == savedInstanceState){
-            addFragment(R.id.fra_container, new MainFragment());
+            addFragment(R.id.fra_container, new MainFragment(null));
         }
     }
 

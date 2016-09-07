@@ -18,7 +18,7 @@ public class ThirdActivity extends BaseActivity {
         setContentView(R.layout.test_third);
         setTitle(R.string.third_activity);
         if(null == savedInstanceState){
-            addFragment(R.id.fra_container, new ThirdFragment());
+            addFragment(R.id.fra_container, new ThirdFragment(null));
         }
     }
 

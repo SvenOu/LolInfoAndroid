@@ -58,6 +58,11 @@ public class AppLaunchFragment extends BaseFragment {
     public static final int DISK_CACHE_SIZE = 50 * 1024 * 1024;
     @Inject Context appContext;
 
+    public AppLaunchFragment() {
+        super(null);
+    }
+
+
     @Nullable
     @Override
     public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

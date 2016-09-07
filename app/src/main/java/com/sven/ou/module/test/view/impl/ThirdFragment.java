@@ -31,6 +31,10 @@ public class ThirdFragment extends BaseFragment implements ThirdView{
     @BindView(R.id.pausevideoplayer) Button btnPauseVideo;
     @BindView(R.id.videoView) VideoView videoView;
 
+    public ThirdFragment(String fragmentId) {
+        super(fragmentId);
+    }
+
     @OnClick(R.id.playvideoplayer)
     public void playVideo(View view) {
         mThirdPresenter.playVideo();

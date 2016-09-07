@@ -24,12 +24,16 @@ import com.sven.ou.module.lol.presenter.SearchVideoDialogPresenter;
 import com.sven.ou.module.lol.presenter.impl.AuthorInfoPresenterImpl;
 import com.sven.ou.module.lol.presenter.impl.NewestVideoPresenterImpl;
 import com.sven.ou.module.lol.presenter.impl.SearchVideoDialogPresenterImpl;
+import com.sven.ou.module.lol.view.AboutUSFragment;
 import com.sven.ou.module.lol.view.AuthorInfoFragment;
-import com.sven.ou.module.lol.view.AuthorVideoFragment;
-import com.sven.ou.module.lol.view.HeroVideoFragment;
+import com.sven.ou.module.lol.view.FoundFragment;
+import com.sven.ou.module.lol.view.FriendFragment;
+import com.sven.ou.module.lol.view.HomeFragment;
+import com.sven.ou.module.lol.view.MyFragment;
 import com.sven.ou.module.lol.view.NewestVideoFragment;
 import com.sven.ou.module.lol.view.SearchVideoDialog;
-import com.sven.ou.module.lol.view.VideoSearchFragment;
+import com.sven.ou.module.lol.view.SettingFragment;
+import com.sven.ou.navigation.ActivityScreenNavigator;
 
 import javax.inject.Named;
 
@@ -40,10 +44,13 @@ import dagger.Provides;
     injects = {
             MainViewActivity.class,
             AuthorInfoFragment.class,
-            AuthorVideoFragment.class,
-            HeroVideoFragment.class,
             NewestVideoFragment.class,
-            VideoSearchFragment.class
+            HomeFragment.class,
+            FriendFragment.class,
+            FoundFragment.class,
+            MyFragment.class,
+            SettingFragment.class,
+            AboutUSFragment.class
     },
     addsTo = ApplicationModule.class,
     library = true
@@ -61,6 +68,10 @@ public class MainViewActivityModule {
         return activity;
     }
 
+    @Provides
+    ActivityScreenNavigator provideActivityScreenNavigator() {
+        return new ActivityScreenNavigator(activity);
+    }
     @Provides
     AuthorInfoPresenter provideAuthorInfoPresenter(Context context) {
         return new AuthorInfoPresenterImpl(context);

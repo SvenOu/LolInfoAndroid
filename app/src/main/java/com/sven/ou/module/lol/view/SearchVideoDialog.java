@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.activeandroid.util.Log;
 import com.paginate.Paginate;
 import com.sven.ou.R;
 import com.sven.ou.common.entity.DaiWanLolResult;
@@ -118,6 +119,11 @@ public class SearchVideoDialog extends Dialog implements Paginate.Callbacks{
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if(actionId == EditorInfo.IME_ACTION_SEARCH){
                     keyWord = String.valueOf(textView.getText());
+                    if(TextUtils.isEmpty(keyWord)){
+                        newestVideoViewAdapter.clearVideoData();
+                        ViewUtil.hideKeyboardFrom(getContext(), textView);
+                        return true;
+                    }
                     loadFirstPage();
                     SearchHistory searchHistory = new SearchHistory();
                     searchHistory.setHistoryId(ServiceUtil.generateId());
@@ -126,6 +132,7 @@ public class SearchVideoDialog extends Dialog implements Paginate.Callbacks{
                     searchHistory.setType(SearchHistory.HISTORY_TYPE_VIDEO);
                     searchVideoDialogPresenter.saveSearchHistory(searchHistory);
                     ViewUtil.hideKeyboardFrom(getContext(), textView);
+                    searchVideoFilterAdapter.clearFilters();
                     return true;
                 }
                 return false;
@@ -135,6 +142,10 @@ public class SearchVideoDialog extends Dialog implements Paginate.Callbacks{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 keyWord = (String) searchVideoFilterAdapter.getItem(position);
+                if(TextUtils.isEmpty(keyWord)){
+                    newestVideoViewAdapter.clearVideoData();
+                    return;
+                }
                 loadFirstPage();
                 ViewUtil.hideKeyboardFrom(getContext(), searchField);
             }
@@ -147,9 +158,14 @@ public class SearchVideoDialog extends Dialog implements Paginate.Callbacks{
         if (paginate != null) {
             paginate.unbind();
         }
-
         searchVideoRecyclerview.setLayoutManager(new GridLayoutManager(getContext().getApplicationContext(), ROW_VIEW_COUNT));
-        newestVideoViewAdapter = new NewestVideoViewAdapter(getContext(), new ArrayList(0));
+        newestVideoViewAdapter = new NewestVideoViewAdapter(getContext(), new ArrayList(0), new NewestVideoViewAdapter.CallBack() {
+            @Override
+            public void onItemClick(NewestVideoViewAdapter.ViewHolder viewHolder) {
+                Video video = viewHolder.video;
+                Toast.makeText(getContext(), video.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
         searchVideoRecyclerview.setAdapter(newestVideoViewAdapter);
         paginate = Paginate.with(searchVideoRecyclerview, this).build();
         paginate.setHasMoreDataToLoad(false);
@@ -171,7 +187,7 @@ public class SearchVideoDialog extends Dialog implements Paginate.Callbacks{
 
     private void loadFirstPage(){
         if(TextUtils.isEmpty(keyWord)){
-            newestVideoViewAdapter.clearVideoData();
+            Log.e(TAG, "keyWord is empty !");
             return;
         }
         searchVideoDialogPresenter.loadNewestVideoPage(new LolObserver<DaiWanLolResult<List<Video>>>(getContext().getApplicationContext()) {

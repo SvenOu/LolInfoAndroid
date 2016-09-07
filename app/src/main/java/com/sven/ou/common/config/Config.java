@@ -32,12 +32,12 @@ public class Config {
     /**
      *公共版战绩令牌
      */
-    public static final String PUBLICK_LOL_REQUEST_TOKEN = "5B618-FB6F5-7B74A-411C5";
+    public static final String PUBLICK_LOL_REQUEST_TOKEN = "8A8BA-7DA8E-272A7-A1157";
 
     /**
      * 视频令牌
      */
-    public static final String VIDEO_REQUEST_TOKEN = "E8A8B-8084B-A88E4-BBA87";
+    public static final String VIDEO_REQUEST_TOKEN = "9B2C1-48C4C-47145-19401";
 
 //    /**
 //     * 触手战绩令牌（云API）

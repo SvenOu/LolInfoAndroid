@@ -24,6 +24,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.paginate.Paginate;
 import com.sven.ou.R;
@@ -47,20 +48,20 @@ public class NewestVideoFragment extends BaseFragment implements Paginate.Callba
     private static final String TAG = NewestVideoFragment.class.getSimpleName();
     private Paginate paginate;
     private NewestVideoViewAdapter newestVideoViewAdapter;
-    private View rootView;
     @BindView(R.id.newestVideoRecyclerview) RecyclerView newestVideoRecyclerview;
     @Inject Context applicationContext;
     @Inject NewestVideoPresenter newestVideoPresenter;
     private static final int ROW_VIEW_COUNT = 2;
 
+    public NewestVideoFragment(String fragmentId) {
+        super(fragmentId);
+    }
+
     @Nullable
     @Override
     public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(null == rootView){
-            rootView = inflater.inflate(
-                    R.layout.fra_newest_video, container, false);
-        }
-        return rootView;
+        return  inflater.inflate(
+                R.layout.fra_newest_video, container, false);
     }
 
     /**
@@ -111,7 +112,13 @@ public class NewestVideoFragment extends BaseFragment implements Paginate.Callba
             paginate.unbind();
         }
         newestVideoRecyclerview.setLayoutManager(new GridLayoutManager(applicationContext, ROW_VIEW_COUNT));
-        newestVideoViewAdapter = new NewestVideoViewAdapter(getActivity(), new ArrayList(0));
+        newestVideoViewAdapter = new NewestVideoViewAdapter(getActivity(), new ArrayList(0), new NewestVideoViewAdapter.CallBack() {
+            @Override
+            public void onItemClick(NewestVideoViewAdapter.ViewHolder viewHolder) {
+                Video video = viewHolder.video;
+                Toast.makeText(applicationContext, video.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
         newestVideoRecyclerview.setAdapter(newestVideoViewAdapter);
 
         paginate = Paginate.with(newestVideoRecyclerview, this).build();

@@ -24,6 +24,9 @@ import com.sven.ou.module.test.activities.ThirdActivity;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * 针对全局的跳转
+ */
 @Singleton
 public class Navigator {
 
@@ -39,4 +42,6 @@ public class Navigator {
     public void geoToThirdView(Context context) {
         context.startActivity(new Intent(context, ThirdActivity.class));
     }
+
+
 }
