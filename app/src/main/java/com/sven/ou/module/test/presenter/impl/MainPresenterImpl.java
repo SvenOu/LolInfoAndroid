@@ -51,11 +51,11 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     public void gotoSecondView() {
-        this.navigator.geoToSecondView(mainView.context());
+        this.navigator.goToSecondView(mainView.context());
     }
 
     public void gotoThirdView() {
-        this.navigator.geoToThirdView(mainView.context());
+        this.navigator.goToThirdView(mainView.context());
     }
 
 }

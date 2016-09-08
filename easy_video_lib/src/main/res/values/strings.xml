@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="evp_submit">返回</string>
+    <string name="evp_retry">重试</string>
+    <string name="evp_custom_label">你好</string>
+
+</resources>

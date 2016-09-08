@@ -1,11 +1,16 @@
 package com.sven.ou.module.lol.entity;
 
+import android.text.TextUtils;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import java.io.Serializable;
 
 /**
  * Created by sven-ou on 2016/8/5.
  */
-public class Video{
+public class Video implements Serializable{
     /**
      * 文章唯一ID
      */
@@ -245,6 +250,14 @@ public class Video{
 
     public String getPlay() {
         return this.play;
+    }
+
+    public String getContentVideoUrl(){
+        if(TextUtils.isEmpty(this.content)){
+            return null;
+        }
+        Document doc = Jsoup.parse(this.content);
+        return doc.select("iframe").get(0).attr("src");
     }
 
     @Override

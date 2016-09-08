@@ -1,1 +1,1 @@
-include ':app', ':android_univesal_image_loader_library_sv', ':dexter', ':ActiveAndroid-lib'
+include ':app', ':android_univesal_image_loader_library_sv', ':dexter', ':ActiveAndroid-lib', ':easy_video_lib'

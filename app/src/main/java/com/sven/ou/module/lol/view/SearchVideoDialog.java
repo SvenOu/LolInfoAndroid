@@ -1,5 +1,6 @@
 package com.sven.ou.module.lol.view;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 
@@ -21,6 +22,7 @@ import com.paginate.Paginate;
 import com.sven.ou.R;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.DebounceTextWatcher;
+import com.sven.ou.common.utils.Logger;
 import com.sven.ou.common.utils.ServiceUtil;
 import com.sven.ou.common.utils.ViewUtil;
 import com.sven.ou.module.launch.db.SearchHistory;
@@ -29,8 +31,10 @@ import com.sven.ou.module.lol.adapters.SearchVideoFilterAdapter;
 import com.sven.ou.module.lol.entity.Video;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.SearchVideoDialogPresenter;
+import com.sven.ou.navigation.Navigator;
 
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,13 +57,18 @@ public class SearchVideoDialog extends Dialog implements Paginate.Callbacks{
     private NewestVideoViewAdapter newestVideoViewAdapter;
     private String keyWord;
 
+    private Navigator navigator;
     private SearchVideoDialogPresenter searchVideoDialogPresenter;
     private DebounceTextWatcher debounceTextWatcher;
     private SearchVideoFilterAdapter searchVideoFilterAdapter;
 
-    public SearchVideoDialog(Context context, SearchVideoDialogPresenter searchVideoDialogPresenter) {
-        super(context, R.style.TranslucentDialog);
+    private WeakReference<Activity> weakActivityReference;
+
+    public SearchVideoDialog(Activity activity, Navigator navigator, SearchVideoDialogPresenter searchVideoDialogPresenter) {
+        super(activity, R.style.TranslucentDialog);
         this.searchVideoDialogPresenter = searchVideoDialogPresenter;
+        this.navigator = navigator;
+        this.weakActivityReference = new WeakReference<Activity>(activity);
         init();
     }
 
@@ -163,7 +172,13 @@ public class SearchVideoDialog extends Dialog implements Paginate.Callbacks{
             @Override
             public void onItemClick(NewestVideoViewAdapter.ViewHolder viewHolder) {
                 Video video = viewHolder.video;
-                Toast.makeText(getContext(), video.getTitle(), Toast.LENGTH_SHORT).show();
+                Activity activity = weakActivityReference.get();
+                if(null == activity){
+                    Logger.e(TAG, "activity is null. cannot play video.");
+                    return;
+                }
+                navigator.goToVideoPlayActivity(activity, video);
+
             }
         });
         searchVideoRecyclerview.setAdapter(newestVideoViewAdapter);

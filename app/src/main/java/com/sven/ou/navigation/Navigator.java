@@ -15,9 +15,12 @@
  */
 package com.sven.ou.navigation;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.sven.ou.module.lol.activities.VideoPlayActivity;
+import com.sven.ou.module.lol.entity.Video;
 import com.sven.ou.module.test.activities.SecondActivity;
 import com.sven.ou.module.test.activities.ThirdActivity;
 
@@ -35,12 +38,16 @@ public class Navigator {
 
     }
 
-    public void geoToSecondView(Context context) {
+    public void goToSecondView(Context context) {
         context.startActivity(new Intent(context, SecondActivity.class));
     }
 
-    public void geoToThirdView(Context context) {
+    public void goToThirdView(Context context) {
         context.startActivity(new Intent(context, ThirdActivity.class));
+    }
+
+    public void goToVideoPlayActivity(Activity activity, Video video) {
+        VideoPlayActivity.StartVideoPlayActivity(activity, video);
     }
 
 

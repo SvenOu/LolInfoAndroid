@@ -24,8 +24,7 @@ public class ThirdFragment extends BaseFragment implements ThirdView{
 
     @Inject Context context;
     @Inject LocationManager locationManager;
-    @Inject
-    ThirdPresenter mThirdPresenter;
+    @Inject ThirdPresenter mThirdPresenter;
 
     @BindView(R.id.playvideoplayer) Button btnPlayVideo;
     @BindView(R.id.pausevideoplayer) Button btnPauseVideo;

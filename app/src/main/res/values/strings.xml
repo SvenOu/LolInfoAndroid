@@ -29,6 +29,7 @@
     <string name="menu_night_mode_night">Night (always)</string>
     <string name="menu_night_mode_auto">Auto</string>
 
+    <string name="loading_video">视频加载中…</string>
     <string name="search_video">搜索视频</string>
     <string name="news">资讯</string>
     <string name="friends">好友</string>

@@ -17,6 +17,7 @@
 package com.sven.ou.module.lol.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -31,11 +32,13 @@ import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
+import com.sven.ou.module.lol.activities.VideoPlayActivity;
 import com.sven.ou.module.lol.adapters.NewestVideoViewAdapter;
 import com.sven.ou.module.lol.entity.Video;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.NewestVideoPresenter;
 import com.sven.ou.navigation.ActivityScreenNavigator;
+import com.sven.ou.navigation.Navigator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +52,12 @@ public class NewestVideoFragment extends BaseFragment implements Paginate.Callba
     private static final String TAG = NewestVideoFragment.class.getSimpleName();
     private Paginate paginate;
     private NewestVideoViewAdapter newestVideoViewAdapter;
+    private static final int ROW_VIEW_COUNT = 2;
+
     @BindView(R.id.newestVideoRecyclerview) RecyclerView newestVideoRecyclerview;
     @Inject Context applicationContext;
     @Inject NewestVideoPresenter newestVideoPresenter;
-    private static final int ROW_VIEW_COUNT = 2;
+    @Inject Navigator navigator;
 
     public NewestVideoFragment() {
         super(ActivityScreenNavigator.KEY_NEWEAST_VIDEO);
@@ -117,7 +122,7 @@ public class NewestVideoFragment extends BaseFragment implements Paginate.Callba
             @Override
             public void onItemClick(NewestVideoViewAdapter.ViewHolder viewHolder) {
                 Video video = viewHolder.video;
-                Toast.makeText(applicationContext, video.getTitle(), Toast.LENGTH_SHORT).show();
+                navigator.goToVideoPlayActivity(getActivity(), video);
             }
         });
         newestVideoRecyclerview.setAdapter(newestVideoViewAdapter);

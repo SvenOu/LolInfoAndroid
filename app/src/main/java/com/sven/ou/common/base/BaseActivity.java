@@ -44,6 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         activityGraph.inject(this);
     }
 
+    /**
+     * @param layoutResID
+     * auto bind for ButterKnife
+     */
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);

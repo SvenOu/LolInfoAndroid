@@ -34,6 +34,7 @@ import com.sven.ou.module.lol.view.NewestVideoFragment;
 import com.sven.ou.module.lol.view.SearchVideoDialog;
 import com.sven.ou.module.lol.view.SettingFragment;
 import com.sven.ou.navigation.ActivityScreenNavigator;
+import com.sven.ou.navigation.Navigator;
 
 import javax.inject.Named;
 
@@ -87,7 +88,7 @@ public class MainViewActivityModule {
         return new SearchVideoDialogPresenterImpl(context);
     }
     @Provides
-    SearchVideoDialog provideSearchVideoDialog(@Named("activityContext")Context context, SearchVideoDialogPresenter searchVideoDialogPresenter) {
-        return new SearchVideoDialog(context, searchVideoDialogPresenter);
+    SearchVideoDialog provideSearchVideoDialog( Navigator navigator, SearchVideoDialogPresenter searchVideoDialogPresenter) {
+        return new SearchVideoDialog(activity, navigator, searchVideoDialogPresenter);
     }
 }

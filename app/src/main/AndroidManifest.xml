@@ -61,6 +61,10 @@
             android:name=".module.test.activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".module.lol.activities.VideoPlayActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
             android:name=".module.lol.activities.CheeseDetailActivity"
             android:screenOrientation="portrait" />
         <activity

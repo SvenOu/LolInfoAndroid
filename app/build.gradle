@@ -119,6 +119,8 @@ dependencies {
     compile 'com.getui:sdk:2.9.0.0'
     //mutidex
     compile 'com.android.support:multidex:1.0.0'
+    //html解析
+    compile 'org.jsoup:jsoup:1.9.2'
     //other
     compile project(':android_univesal_image_loader_library_sv')
     compile project(':dexter')

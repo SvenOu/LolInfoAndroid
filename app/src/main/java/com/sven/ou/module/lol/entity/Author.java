@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 解說者信息
  */
-public class Author{
+public class Author implements Serializable{
     private String id;
 
     /**
