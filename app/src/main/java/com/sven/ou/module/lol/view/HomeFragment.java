@@ -121,8 +121,8 @@ public class HomeFragment extends BaseFragment {
 
     private void setupViewPager() {
         tabFragmentPagerAdapter = new TabFragmentPagerAdapter(getActivity().getSupportFragmentManager());
-        tabFragmentPagerAdapter.addFragment(new AuthorInfoFragment(null), getString(R.string.author_info));
-        tabFragmentPagerAdapter.addFragment(new NewestVideoFragment(null), getString(R.string.newest_video));
+        tabFragmentPagerAdapter.addFragment(new AuthorInfoFragment(), getString(R.string.author_info));
+        tabFragmentPagerAdapter.addFragment(new NewestVideoFragment(), getString(R.string.newest_video));
         tabViewpager.setAdapter(tabFragmentPagerAdapter);
     }
 
