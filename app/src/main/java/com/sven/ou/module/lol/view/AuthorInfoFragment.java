@@ -34,6 +34,7 @@ import com.sven.ou.module.lol.adapters.AuthorRecycleViewAdapter;
 import com.sven.ou.module.lol.entity.Author;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.AuthorInfoPresenter;
+import com.sven.ou.navigation.ActivityScreenNavigator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +53,8 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
     @Inject Context applicationContext;
     @Inject AuthorInfoPresenter authorInfoPresenter;
 
-    public AuthorInfoFragment(String fragmentId) {
-        super(fragmentId);
+    public AuthorInfoFragment() {
+        super(ActivityScreenNavigator.KEY_AUTHOR_INFO);
     }
 
     @Nullable

@@ -35,6 +35,7 @@ import com.sven.ou.module.lol.adapters.NewestVideoViewAdapter;
 import com.sven.ou.module.lol.entity.Video;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.NewestVideoPresenter;
+import com.sven.ou.navigation.ActivityScreenNavigator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +54,8 @@ public class NewestVideoFragment extends BaseFragment implements Paginate.Callba
     @Inject NewestVideoPresenter newestVideoPresenter;
     private static final int ROW_VIEW_COUNT = 2;
 
-    public NewestVideoFragment(String fragmentId) {
-        super(fragmentId);
+    public NewestVideoFragment() {
+        super(ActivityScreenNavigator.KEY_NEWEAST_VIDEO);
     }
 
     @Nullable

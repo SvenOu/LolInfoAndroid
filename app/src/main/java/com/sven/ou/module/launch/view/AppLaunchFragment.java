@@ -39,6 +39,7 @@ import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.config.Config;
 import com.sven.ou.module.launch.db.SearchHistory;
 import com.sven.ou.module.lol.activities.MainViewActivity;
+import com.sven.ou.navigation.ActivityScreenNavigator;
 
 import javax.inject.Inject;
 
@@ -59,9 +60,8 @@ public class AppLaunchFragment extends BaseFragment {
     @Inject Context appContext;
 
     public AppLaunchFragment() {
-        super(null);
+        super(ActivityScreenNavigator.KEY_APP_LAUNCH);
     }
-
 
     @Nullable
     @Override

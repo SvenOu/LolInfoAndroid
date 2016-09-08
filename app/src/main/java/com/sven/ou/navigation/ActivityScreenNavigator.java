@@ -21,12 +21,17 @@ import java.util.Stack;
  * 通过dagger与activtiy的生命周期绑定
  */
 public class ActivityScreenNavigator {
+    public static final String KEY_APP_LAUNCH = "app_launch";
+
     public static final String KEY_HOME = "info";
     public static final String KEY_FRIEND = "friend";
     public static final String KEY_DISCOVER = "discover";
     public static final String KEY_MY = "my";
     public static final String KEY_SETTING = "setting";
     public static final String KEY_ABOUT_US = "about_us";
+
+    public static final String KEY_AUTHOR_INFO = "author_info";
+    public static final String KEY_NEWEAST_VIDEO = "newest_video";
 
     private FragmentManager fragmentManager;
     /**
