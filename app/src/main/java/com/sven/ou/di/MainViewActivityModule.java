@@ -26,7 +26,7 @@ import com.sven.ou.module.lol.presenter.impl.NewestVideoPresenterImpl;
 import com.sven.ou.module.lol.presenter.impl.SearchVideoDialogPresenterImpl;
 import com.sven.ou.module.lol.view.AboutUSFragment;
 import com.sven.ou.module.lol.view.AuthorInfoFragment;
-import com.sven.ou.module.lol.view.FoundFragment;
+import com.sven.ou.module.lol.view.DiscoverFragment;
 import com.sven.ou.module.lol.view.FriendFragment;
 import com.sven.ou.module.lol.view.HomeFragment;
 import com.sven.ou.module.lol.view.MyFragment;
@@ -48,7 +48,7 @@ import dagger.Provides;
             NewestVideoFragment.class,
             HomeFragment.class,
             FriendFragment.class,
-            FoundFragment.class,
+            DiscoverFragment.class,
             MyFragment.class,
             SettingFragment.class,
             AboutUSFragment.class

@@ -6,7 +6,7 @@ import com.sven.ou.R;
 import com.sven.ou.common.base.BaseActivity;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.module.lol.view.AboutUSFragment;
-import com.sven.ou.module.lol.view.FoundFragment;
+import com.sven.ou.module.lol.view.DiscoverFragment;
 import com.sven.ou.module.lol.view.FriendFragment;
 import com.sven.ou.module.lol.view.HomeFragment;
 import com.sven.ou.module.lol.view.MyFragment;
@@ -78,7 +78,7 @@ public class ActivityScreenNavigator {
                     fragment = new FriendFragment(key);
                     break;
                 case KEY_DISCOVER:
-                    fragment = new FoundFragment(key);
+                    fragment = new DiscoverFragment(key);
                     break;
                 case KEY_MY:
                     fragment = new MyFragment(key);

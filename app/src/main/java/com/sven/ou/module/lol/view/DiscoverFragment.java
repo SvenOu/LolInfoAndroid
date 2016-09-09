@@ -9,14 +9,14 @@ import android.view.ViewGroup;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 
-public class FoundFragment extends BaseFragment {
+public class DiscoverFragment extends BaseFragment {
 
     @SuppressLint("ValidFragment")
-    public FoundFragment(String fragmentId) {
+    public DiscoverFragment(String fragmentId) {
         super(fragmentId);
     }
 
-    public FoundFragment() {}
+    public DiscoverFragment() {}
 
     @Override
     protected View onCreateFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
