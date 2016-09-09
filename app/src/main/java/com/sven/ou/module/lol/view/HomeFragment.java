@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.lsjwzh.widget.recyclerviewpager.LoopRecyclerViewPager;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
+import com.sven.ou.common.component.DotsView;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.lol.adapters.WeekFreeHerosAdapter;
@@ -57,6 +58,7 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.toolbarRightIcon) ImageView toolbarRightIcon;
     @BindView(R.id.toolbarTitle) TextView toolbarTitle;
     @BindView(R.id.mainFab) FloatingActionButton mainFab;
+    @BindView(R.id.freeHeroDotsView) DotsView freeHeroDotsView;
 
     private WeekFreeHerosAdapter weekFreeHerosAdapter;
     private TabFragmentPagerAdapter tabFragmentPagerAdapter;
@@ -124,6 +126,12 @@ public class HomeFragment extends BaseFragment {
                     public void onItemClick(WeekFreeHerosAdapter.ViewHolder viewHolder) {
                         navigator.goToFilterActivity(getActivity(), viewHolder.hero);
                     }
+
+                    @Override
+                    public void onItemChange(Hero hero, int totalCount, int location) {
+                        freeHeroDotsView.updaetpage(totalCount, location);
+                    }
+
                 });
                 rvp_weekFreeHeros.setAdapter(weekFreeHerosAdapter);
             }

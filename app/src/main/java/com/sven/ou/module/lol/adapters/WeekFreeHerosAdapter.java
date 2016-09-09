@@ -75,6 +75,8 @@ public class WeekFreeHerosAdapter
             }
         });
 
+        callback.onItemChange(holder.hero, getItemCount(), position);
+
         Network.getDaiWanLolDataApi().getChampionIconById(Integer.parseInt(holder.hero.getKey())).
                 subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
@@ -148,6 +150,7 @@ public class WeekFreeHerosAdapter
     }
 
     public interface Callback{
-       void onItemClick(ViewHolder viewHolder);
+        void onItemClick(ViewHolder viewHolder);
+        void onItemChange(Hero hero, int totalCount, int location);
     }
 }
