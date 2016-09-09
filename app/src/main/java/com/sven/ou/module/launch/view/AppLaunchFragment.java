@@ -33,34 +33,16 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.config.Config;
-import com.sven.ou.common.entity.DaiWanLolResult;
-import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.launch.db.SearchHistory;
 import com.sven.ou.module.lol.activities.MainViewActivity;
-import com.sven.ou.module.lol.entity.Video;
 import com.sven.ou.module.lol.hackdaiwan.TokenInfo;
-import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.navigation.ActivityScreenNavigator;
-import com.sven.ou.network.Network;
-
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.parser.Parser;
-import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
