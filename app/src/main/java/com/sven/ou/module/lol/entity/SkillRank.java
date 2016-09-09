@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * 英雄熟练度排名的玩家信息
  */
-public class SkillRank {
+public class SkillRank implements Serializable {
     /**
      * 排名
      */

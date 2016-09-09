@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * 玩家排名信息
  */
-public class Champion {
+public class Champion implements Serializable {
     private int champion_id;
 
     private int use_ratio;

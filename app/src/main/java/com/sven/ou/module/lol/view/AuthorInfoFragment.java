@@ -35,6 +35,7 @@ import com.sven.ou.module.lol.entity.Author;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.AuthorInfoPresenter;
 import com.sven.ou.navigation.ActivityScreenNavigator;
+import com.sven.ou.navigation.Navigator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,7 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
     private AuthorRecycleViewAdapter authorRecycleViewAdapter;
     @BindView(R.id.recyclerview) RecyclerView authorInfoRecyclerview;
     @Inject Context applicationContext;
+    @Inject Navigator navigator;
     @Inject AuthorInfoPresenter authorInfoPresenter;
 
     public AuthorInfoFragment() {
@@ -112,7 +114,12 @@ public class AuthorInfoFragment extends BaseFragment implements Paginate.Callbac
             paginate.unbind();
         }
         authorInfoRecyclerview.setLayoutManager(new LinearLayoutManager(authorInfoRecyclerview.getContext()));
-        authorRecycleViewAdapter = new AuthorRecycleViewAdapter(getActivity(), new ArrayList(0));
+        authorRecycleViewAdapter = new AuthorRecycleViewAdapter(getActivity(), new ArrayList(0), new AuthorRecycleViewAdapter.Callback() {
+            @Override
+            public void onItemClick(AuthorRecycleViewAdapter.ViewHolder viewHolder) {
+                navigator.goToFilterActivity(getActivity(), viewHolder.author);
+            }
+        });
         authorInfoRecyclerview.setAdapter(authorRecycleViewAdapter);
 
         paginate = Paginate.with(authorInfoRecyclerview, this).build();

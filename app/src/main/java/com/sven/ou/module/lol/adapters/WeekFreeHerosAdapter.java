@@ -35,6 +35,7 @@ public class WeekFreeHerosAdapter
     private int mBackground;
     private Context context;
     private List<Hero> heros;
+    private Callback callback;
 
     public void add(List<Hero> heros) {
         int previousDataSize = this.heros.size();
@@ -46,11 +47,12 @@ public class WeekFreeHerosAdapter
         return heros.get(position);
     }
 
-    public WeekFreeHerosAdapter(Context context, List<Hero> heros) {
+    public WeekFreeHerosAdapter(Context context, List<Hero> heros, Callback callback) {
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
         mBackground = mTypedValue.resourceId;
         this.heros = heros;
         this.context = context;
+        this.callback = callback;
     }
 
     @Override
@@ -69,12 +71,7 @@ public class WeekFreeHerosAdapter
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2016/8/31
-//                Context context = v.getContext();
-//                Intent intent = new Intent(context, CheeseDetailActivity.class);
-//                intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.hero);
-//
-//                context.startActivity(intent);
+                callback.onItemClick(holder);
             }
         });
 
@@ -119,7 +116,7 @@ public class WeekFreeHerosAdapter
         }
     }
 
-    private abstract static class LolHeroObserver<T> implements Observer<T> {
+    public abstract static class LolHeroObserver<T> implements Observer<T> {
         private static final String TAG = LolObserver.class.getSimpleName();
         private Context context;
         private WeakReference<ImageView> imageViewWeakReference;
@@ -148,5 +145,9 @@ public class WeekFreeHerosAdapter
             onSuccess(t, imageView);
         }
         public abstract void onSuccess(T t, ImageView imageView);
+    }
+
+    public interface Callback{
+       void onItemClick(ViewHolder viewHolder);
     }
 }

@@ -26,7 +26,7 @@ public interface DaiWanLolVideoApi{
      * @param p 页数,从1开始
      */
     @GET("GetAuthorVideos")
-    Observable<DaiWanLolResult<List<Video>>> getAuthorVideos(@Query("video") String authorId, @Query("p") int p);
+    Observable<DaiWanLolResult<List<Video>>> getAuthorVideos(@Query("author") String authorId, @Query("p") int p);
 
     /**
      * 最新视频

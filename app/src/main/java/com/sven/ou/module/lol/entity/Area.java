@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * 国服区信息
  */
-public class Area {
+public class Area implements Serializable{
     /**
      * 区服ID
      */

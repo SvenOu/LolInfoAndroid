@@ -18,9 +18,10 @@ package com.sven.ou.module.lol.entity;
 
 import com.sven.ou.R;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Cheeses {
+public class Cheeses implements Serializable {
 
     private static final Random RANDOM = new Random();
 

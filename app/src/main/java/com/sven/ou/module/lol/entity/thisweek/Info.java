@@ -1,10 +1,12 @@
 package com.sven.ou.module.lol.entity.thisweek;
 
+import java.io.Serializable;
+
 /**
  * 英雄屬性
  * 攻击,防御,魔法,难度
  */
-public class Info {
+public class Info implements Serializable{
     private int attack;
 
     private int defense;

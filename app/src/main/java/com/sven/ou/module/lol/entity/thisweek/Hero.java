@@ -1,11 +1,12 @@
 package com.sven.ou.module.lol.entity.thisweek;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * 英雄信息
  */
-public class Hero {
+public class Hero implements Serializable{
     /**
      * 英文名称
      */

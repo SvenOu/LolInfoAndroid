@@ -1,11 +1,12 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 用户的每场的战斗基本信息
  */
-public class Combat {
+public class Combat implements Serializable {
     private int result;
 
     private int total_num;

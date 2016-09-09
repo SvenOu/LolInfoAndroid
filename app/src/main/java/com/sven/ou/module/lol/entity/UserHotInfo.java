@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * 用户基本信息
  */
-public class UserHotInfo {
+public class UserHotInfo implements Serializable {
     /**
      * 区服ID
      */

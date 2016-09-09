@@ -23,6 +23,7 @@ public class AuthorRecycleViewAdapter
     private final TypedValue mTypedValue = new TypedValue();
     private int mBackground;
     private List<Author> authors;
+    private Callback callback;
 
     public void add(List<Author> authors) {
         int previousDataSize = this.authors.size();
@@ -34,10 +35,11 @@ public class AuthorRecycleViewAdapter
         return authors.get(position);
     }
 
-    public AuthorRecycleViewAdapter(Context context, List<Author> authors) {
+    public AuthorRecycleViewAdapter(Context context, List<Author> authors, Callback callback) {
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
         mBackground = mTypedValue.resourceId;
         this.authors = authors;
+        this.callback = callback;
     }
 
     @Override
@@ -56,12 +58,7 @@ public class AuthorRecycleViewAdapter
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2016/8/31
-//                Context context = v.getContext();
-//                Intent intent = new Intent(context, CheeseDetailActivity.class);
-//                intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.author);
-//
-//                context.startActivity(intent);
+                callback.onItemClick(holder);
             }
         });
         ImageLoader.getInstance().displayImage(holder.author.getImg(), holder.mImageView);
@@ -90,5 +87,9 @@ public class AuthorRecycleViewAdapter
         public String toString() {
             return super.toString() + " '" + mTextView.getText();
         }
+    }
+
+    public interface Callback{
+        void onItemClick(ViewHolder viewHolder);
     }
 }

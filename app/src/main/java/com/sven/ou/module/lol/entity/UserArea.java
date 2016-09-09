@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * 用户名所在的区服信息及用户在区服中的基本信息
  */
-public class UserArea {
+public class UserArea implements Serializable {
     /**
      * 大区ID
      */

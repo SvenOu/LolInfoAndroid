@@ -30,6 +30,7 @@ import com.sven.ou.module.lol.adapters.WeekFreeHerosAdapter;
 import com.sven.ou.module.lol.entity.thisweek.Hero;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.AuthorInfoPresenter;
+import com.sven.ou.navigation.Navigator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,7 @@ public class HomeFragment extends BaseFragment {
     @Inject AuthorInfoPresenter authorInfoPresenter;
     @Inject SearchVideoDialog searchVideoDialog;
     @Inject Context applicationContext;
+    @Inject Navigator navigator;
     @BindView(R.id.weekFreeHeroList) LoopRecyclerViewPager rvp_weekFreeHeros;
     @BindView(R.id.tabViewpager) ViewPager tabViewpager;
     @BindView(R.id.tabs) TabLayout tabLayout;
@@ -117,7 +119,12 @@ public class HomeFragment extends BaseFragment {
                     heros.add(hero);
                 }
                 rvp_weekFreeHeros.setLayoutManager(new LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false ));
-                weekFreeHerosAdapter = new WeekFreeHerosAdapter(applicationContext, heros);
+                weekFreeHerosAdapter = new WeekFreeHerosAdapter(applicationContext, heros, new WeekFreeHerosAdapter.Callback() {
+                    @Override
+                    public void onItemClick(WeekFreeHerosAdapter.ViewHolder viewHolder) {
+                        navigator.goToFilterActivity(getActivity(), viewHolder.hero);
+                    }
+                });
                 rvp_weekFreeHeros.setAdapter(weekFreeHerosAdapter);
             }
         });

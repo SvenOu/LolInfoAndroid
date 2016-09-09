@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity.thisweek;
 
+import java.io.Serializable;
+
 /**
  * 暂无，可通key过接口GetChampionImage，GetChampionCNName，GetChampionENName 获取相关信息
  */
-public class Image {
+public class Image implements Serializable{
     private String full;
 
     private String sprite;

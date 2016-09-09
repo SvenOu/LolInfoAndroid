@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * 单场战斗数据
  */
-public class Battle {
+public class Battle implements Serializable {
     private int game_id;
 
     private String battle_time;

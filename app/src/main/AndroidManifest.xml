@@ -63,6 +63,9 @@
         <activity
             android:name=".module.lol.activities.VideoPlayActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".module.lol.activities.FilterVideoActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".module.lol.activities.CheeseDetailActivity"

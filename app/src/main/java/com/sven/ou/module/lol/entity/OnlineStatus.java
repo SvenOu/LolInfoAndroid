@@ -1,9 +1,11 @@
 package com.sven.ou.module.lol.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by sven-ou on 2016/8/4.
  */
-public class OnlineStatus {
+public class OnlineStatus implements Serializable {
     private String status;
 
     private String gameId;
