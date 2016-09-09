@@ -1,5 +1,6 @@
 package com.sven.ou.module.test.view.impl;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -31,8 +32,12 @@ public class SecondFragment extends BaseFragment implements SecondView{
     @BindView(R.id.pausevideoplayer) Button btnPauseVideo;
     @BindView(R.id.surfaceview) SurfaceView surfaceView;
 
+    @SuppressLint("ValidFragment")
     public SecondFragment(String fragmentId) {
         super(fragmentId);
+    }
+
+    public SecondFragment() {
     }
 
     @OnClick(R.id.playvideoplayer)

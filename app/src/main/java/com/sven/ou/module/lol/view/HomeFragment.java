@@ -1,5 +1,6 @@
 package com.sven.ou.module.lol.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -74,9 +75,12 @@ public class HomeFragment extends BaseFragment {
                 .setAction("Action", null).show();
     }
 
+    @SuppressLint("ValidFragment")
     public HomeFragment(String fragmentId) {
         super(fragmentId);
     }
+
+    public HomeFragment() {}
 
     @Override
     protected View onCreateFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -16,6 +16,7 @@
 
 package com.sven.ou.module.lol.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,6 +60,7 @@ public class NewestVideoFragment extends BaseFragment implements Paginate.Callba
     @Inject NewestVideoPresenter newestVideoPresenter;
     @Inject Navigator navigator;
 
+    @SuppressLint("ValidFragment")
     public NewestVideoFragment() {
         super(ActivityScreenNavigator.KEY_NEWEAST_VIDEO);
     }

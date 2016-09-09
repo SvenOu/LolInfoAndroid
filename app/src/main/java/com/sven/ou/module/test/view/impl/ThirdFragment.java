@@ -1,5 +1,6 @@
 package com.sven.ou.module.test.view.impl;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -30,9 +31,12 @@ public class ThirdFragment extends BaseFragment implements ThirdView{
     @BindView(R.id.pausevideoplayer) Button btnPauseVideo;
     @BindView(R.id.videoView) VideoView videoView;
 
+    @SuppressLint("ValidFragment")
     public ThirdFragment(String fragmentId) {
         super(fragmentId);
     }
+
+    public ThirdFragment() {}
 
     @OnClick(R.id.playvideoplayer)
     public void playVideo(View view) {

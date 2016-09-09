@@ -1,5 +1,6 @@
 package com.sven.ou.common.base;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,12 +16,16 @@ public abstract class BaseFragment extends Fragment {
     private static final String TAG = BaseFragment.class.getSimpleName();
     private Unbinder unbinder;
 
-    private final String fragmentId;
+    private String fragmentId;
     private View rootView;
     private boolean cacheContentData = true;
+
+    @SuppressLint("ValidFragment")
     public BaseFragment(String fragmentId) {
         this.fragmentId = fragmentId;
     }
+
+    public BaseFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

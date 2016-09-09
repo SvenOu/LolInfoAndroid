@@ -1,5 +1,6 @@
 package com.sven.ou.module.test.view.impl;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -33,9 +34,12 @@ public class MainFragment extends BaseFragment implements MainView {
     @BindView(R.id.button4) Button button4;
     @BindView(R.id.button5) Button button5;
 
+    @SuppressLint("ValidFragment")
     public MainFragment(String fragmentId) {
         super(fragmentId);
     }
+
+    public MainFragment() {}
 
     @Override
     public View onCreateFragmentView(LayoutInflater inflater, ViewGroup container,
