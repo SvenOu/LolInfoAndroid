@@ -115,7 +115,7 @@ public class FilterVideoActivity extends BaseActivity implements Paginate.Callba
 
             if(FILTER_TYPE_HERO.equals(dataType.getType())){
                 Hero hero = dataType.getHero();
-                collapsingToolbar.setTitle(hero.getName());
+                collapsingToolbar.setTitle(hero.getTitle());
                 Network.getDaiWanLolDataApi().getChampionIconById(Integer.parseInt(hero.getKey())).
                         subscribeOn(Schedulers.io()).
                         observeOn(AndroidSchedulers.mainThread()).
