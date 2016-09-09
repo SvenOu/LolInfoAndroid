@@ -16,9 +16,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by sven-ou on 2016/7/18.
- */
 public class Network {
 
     private static final String TAG = Network.class.getSimpleName();
@@ -30,7 +27,6 @@ public class Network {
     private static OkHttpClient okHttpClient;
     private static CallAdapter.Factory rxJavaCallAdapterFactory;
     private static Converter.Factory gsonConverterFactory;
-
 
     public static DaiWanLolDataApi getDaiWanLolDataApi() {
         if (daiWanLolDataApi == null) {

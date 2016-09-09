@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
+import com.activeandroid.util.Log;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -37,9 +38,29 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.config.Config;
+import com.sven.ou.common.entity.DaiWanLolResult;
+import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.launch.db.SearchHistory;
 import com.sven.ou.module.lol.activities.MainViewActivity;
+import com.sven.ou.module.lol.entity.Video;
+import com.sven.ou.module.lol.hackdaiwan.TokenInfo;
+import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.navigation.ActivityScreenNavigator;
+import com.sven.ou.network.Network;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -54,6 +75,7 @@ public class AppLaunchFragment extends BaseFragment {
 
     private static final String TAG = AppLaunchFragment.class.getSimpleName();
 
+    private static final String DAIWAN_LOL_LOGIN_PAGE_URL = "http://www.games-cube.com/central/User/login";
     private static final String DB_NAME = "lol_dbchg.sqlite";
     private static final int DB_VERSION = 1;
     public static final int DISK_CACHE_SIZE = 50 * 1024 * 1024;
@@ -78,8 +100,7 @@ public class AppLaunchFragment extends BaseFragment {
     }
 
     private void init() {
-
-        initActiveAndroid();
+        initData();
         initImageLoader();
     }
 
@@ -108,24 +129,41 @@ public class AppLaunchFragment extends BaseFragment {
         ImageLoader.getInstance().init(config);
     }
 
-    private void initActiveAndroid() {
+    private void initData() {
         //当重新安装app的时候才会自动执行migrations和创建model对应的表
         final Configuration dbConfiguration = new Configuration.Builder(appContext).
                 setDatabaseName(Config.getDataBasePrefix() + DB_NAME).
                 setFormatType(Configuration.Builder.SQL_SCRIPT_XML_FORMAT).
                 setDatabaseVersion(DB_VERSION).
-                setModelClasses(SearchHistory.class).
+                setModelClasses(SearchHistory.class, TokenInfo.class).
                 create();
 
         Single.create(new Single.OnSubscribe<Boolean>() {
             @Override
             public void call(SingleSubscriber<? super Boolean> singleSubscriber) {
                 ActiveAndroid.initialize(dbConfiguration);
-                // TODO: 2016/9/5  need remove
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+
+                TokenInfo dataToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_DATA);
+                if(null == dataToken || dataToken.tokenIsExpired()){
+                    try {
+                        TokenInfo.loginAndSaveAllToken();
+                        dataToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_DATA);
+                    } catch (IOException | ParseException e) {
+                        e.printStackTrace();
+                        singleSubscriber.onError(e);
+                    }
+                }
+                TokenInfo videoToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_VIDEO);
+                TokenInfo tentacleToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_TENTACLE);
+
+                if(null != dataToken){
+                    Config.PUBLICK_LOL_REQUEST_TOKEN = dataToken.getToken();
+                }
+                if(null != videoToken){
+                    Config.VIDEO_REQUEST_TOKEN = videoToken.getToken();
+                }
+                if(null != tentacleToken){
+                    Config.TENTACLE_LOL_REQUEST_TOKEN = tentacleToken.getToken();
                 }
                 singleSubscriber.onSuccess(true);
             }
@@ -137,10 +175,12 @@ public class AppLaunchFragment extends BaseFragment {
             public void onCompleted() {}
 
             @Override
-            public void onError(Throwable e) {}
+            public void onError(Throwable e) {
+                Log.e(TAG, "onError: " + e.getMessage());
+            }
 
             @Override
-            public void onNext(Boolean result) {
+            public void onNext(Boolean token) {
                 gotoMainScreen();
             }
         });

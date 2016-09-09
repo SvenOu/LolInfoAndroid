@@ -102,6 +102,28 @@ public class VideoPlayActivity extends BaseActivity  {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        webView.onPause();
+        webView.pauseTimers();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        webView.resumeTimers();
+        webView.onResume();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        webView.destroy();
+        webView = null;
+        super.onDestroy();
+    }
+
+    @Override
     protected List<Object> getModules() {
         return Arrays.<Object>asList(new VideoPlayActivityModule(this));
     }
