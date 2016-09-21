@@ -18,9 +18,6 @@ android {
                 PACKAGE_NAME : applicationId
         ]
         vectorDrawables.useSupportLibrary = true
-        ndk {
-            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
-        }
     }
 
     dexOptions {
@@ -115,8 +112,6 @@ dependencies {
     //rxjava
     compile 'io.reactivex:rxjava:1.1.7'
     compile 'io.reactivex:rxandroid:1.2.1'
-    //个推
-    compile 'com.getui:sdk:2.9.0.0'
     //mutidex
     compile 'com.android.support:multidex:1.0.0'
     //html解析
@@ -125,4 +120,5 @@ dependencies {
     compile project(':android_univesal_image_loader_library_sv')
     compile project(':dexter')
     compile project(':ActiveAndroid-lib')
+    compile project(':jpush_lib')
 }

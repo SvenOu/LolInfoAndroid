@@ -2,7 +2,6 @@ package com.sven.ou.module.lol.view;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,7 +24,7 @@ import com.sven.ou.common.utils.DebounceTextWatcher;
 import com.sven.ou.common.utils.Logger;
 import com.sven.ou.common.utils.ServiceUtil;
 import com.sven.ou.common.utils.ViewUtil;
-import com.sven.ou.module.launch.db.SearchHistory;
+import com.sven.ou.module.lol.db.SearchHistory;
 import com.sven.ou.module.lol.adapters.NewestVideoViewAdapter;
 import com.sven.ou.module.lol.adapters.SearchVideoFilterAdapter;
 import com.sven.ou.module.lol.entity.Video;

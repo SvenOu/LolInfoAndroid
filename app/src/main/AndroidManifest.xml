@@ -19,11 +19,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- GCM requires a Google account. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Keeps the processor from sleeping when a message is received. -->
-    <!--
-	     Creates a custom permission so only this app can receive its messages.
-	     NOTE: the permission *must* be called PACKAGE.permission.C2D_MESSAGE,
-	           where PACKAGE is the application's package name.
-    -->
+
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- This app has permission to register and receive data message. -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -77,28 +73,6 @@
             android:name=".module.test.activities.ThirdActivity"
             android:screenOrientation="portrait" />
 
-        <!--配置个推 -->
-        <receiver
-            android:name=".common.push.PushReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />
-            </intent-filter>
-        </receiver>
-        <!--end 配置个推 -->
-        <!--
-                <meta-data
-                    android:name="UMENG_CHANNEL"
-                    android:value="${UMENG_CHANNEL_VALUE}" />
-
-                <meta-data
-                    android:name="APP_MODE"
-                    android:value="${APP_MODE}" />
-
-                <meta-data
-                    android:name="IS_DEVELOP_MODE"
-                    android:value="${IS_DEVELOP_MODE}" />
-        -->
         <!--配置active android-->
         <meta-data android:name="AA_SERIALIZERS"
             android:value="ou.sven.com.activeandroidtest.db.UtilDateSerializer" />

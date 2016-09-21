@@ -1,6 +1,6 @@
 package com.sven.ou.module.lol.presenter;
 
-import com.sven.ou.module.launch.db.SearchHistory;
+import com.sven.ou.module.lol.db.SearchHistory;
 
 import java.util.List;
 

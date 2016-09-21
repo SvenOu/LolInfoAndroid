@@ -5,12 +5,6 @@ package com.sven.ou;
 import android.app.Application;
 import android.support.multidex.MultiDex;
 import android.util.DisplayMetrics;
-
-import com.igexin.sdk.PushManager;
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.squareup.leakcanary.LeakCanary;
 import com.sven.ou.common.config.Config;
 import com.sven.ou.di.ApplicationModule;
@@ -19,11 +13,10 @@ import com.sven.ou.di.MainActivityModule;
 import java.util.Arrays;
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.im.android.api.JMessageClient;
 import dagger.ObjectGraph;
 
-/**
- * Created by sven-ou on 2016/6/8.
- */
 public class LolApplication extends Application {
     public static Application instance;
     private static final String TAG = LolApplication.class.getSimpleName();
@@ -37,10 +30,15 @@ public class LolApplication extends Application {
         instance = this;
         applicationGraph = ObjectGraph.create(getModules().toArray());
         LeakCanary.install(this);
-        PushManager.getInstance().initialize(this.getApplicationContext());
+        iniJMessage();
     }
 
-
+    private void iniJMessage() {
+        JMessageClient.init(getApplicationContext());
+        if(Config.isDevelopMode()){
+            JPushInterface.setDebugMode(true);
+        }
+    }
 
     /**
      * {@link ApplicationModule#application}  test {@link Application}

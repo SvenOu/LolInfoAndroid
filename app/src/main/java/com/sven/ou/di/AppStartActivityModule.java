@@ -15,6 +15,7 @@
  */
 package com.sven.ou.di;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.sven.ou.module.launch.activities.AppStartActivity;
@@ -51,5 +52,10 @@ public class AppStartActivityModule {
     @Provides
     MainPresenter provideMainPresenter(RecusionTest recusionTest, LolApiTest lolApiTest, Navigator navigator) {
         return new MainPresenterImpl(recusionTest, lolApiTest, navigator);
+    }
+
+    @Provides
+    ProgressDialog provideMainPresenter() {
+        return new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
     }
 }

@@ -1,4 +1,4 @@
-package com.sven.ou.module.launch.db;
+package com.sven.ou.module.lol.db;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;

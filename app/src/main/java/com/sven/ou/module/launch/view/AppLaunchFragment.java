@@ -1,22 +1,6 @@
-/*
- * Copyright (C) 2015 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.sven.ou.module.launch.view;
 
-
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
@@ -37,15 +22,19 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.config.Config;
-import com.sven.ou.module.launch.db.SearchHistory;
 import com.sven.ou.module.lol.activities.MainViewActivity;
+import com.sven.ou.module.lol.db.SearchHistory;
 import com.sven.ou.module.lol.hackdaiwan.TokenInfo;
 import com.sven.ou.navigation.ActivityScreenNavigator;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.im.android.api.JMessageClient;
 import rx.Single;
 import rx.SingleSubscriber;
 import rx.Subscriber;
@@ -57,11 +46,11 @@ public class AppLaunchFragment extends BaseFragment {
 
     private static final String TAG = AppLaunchFragment.class.getSimpleName();
 
-    private static final String DAIWAN_LOL_LOGIN_PAGE_URL = "http://www.games-cube.com/central/User/login";
     private static final String DB_NAME = "lol_dbchg.sqlite";
     private static final int DB_VERSION = 1;
     public static final int DISK_CACHE_SIZE = 50 * 1024 * 1024;
     @Inject Context appContext;
+    @Inject ProgressDialog progressDialog;
 
     public AppLaunchFragment() {
         super(ActivityScreenNavigator.KEY_APP_LAUNCH);
@@ -82,8 +71,10 @@ public class AppLaunchFragment extends BaseFragment {
     }
 
     private void init() {
-        initData();
+        progressDialog.hide();
+        progressDialog.show();
         initImageLoader();
+        initConfig();
     }
 
     private void initImageLoader() {
@@ -104,14 +95,49 @@ public class AppLaunchFragment extends BaseFragment {
                 .defaultDisplayImageOptions(options)
                 .tasksProcessingOrder(QueueProcessingType.LIFO);
 
-        if(Config.isDevelopMode())
-            builder.writeDebugLogs(); // Remove for release app
+        if(Config.isDevelopMode()){
+            builder.writeDebugLogs();
+        }
 
         ImageLoaderConfiguration config = builder.build();
         ImageLoader.getInstance().init(config);
     }
 
-    private void initData() {
+    private boolean initDaiWanToken() {
+        TokenInfo dataToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_DATA);
+        if(null == dataToken || dataToken.tokenIsExpired()){
+            try {
+                TokenInfo.loginAndSaveAllToken(getActivity(), new TokenInfo.GetTokenSCallBack() {
+                    @Override
+                    public void onGetAllToken(String dataToken, String videoToken, String tentacleToken, Date expiredDate) {
+                        Config.PUBLICK_LOL_REQUEST_TOKEN = dataToken;
+                        Config.VIDEO_REQUEST_TOKEN = videoToken;
+                        Config.TENTACLE_LOL_REQUEST_TOKEN = tentacleToken;
+                        gotoMainScreen();
+                    }
+                });
+            } catch (IOException | ParseException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }else{
+            TokenInfo videoToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_VIDEO);
+            TokenInfo tentacleToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_TENTACLE);
+
+            if(null != dataToken){
+                Config.PUBLICK_LOL_REQUEST_TOKEN = dataToken.getToken();
+            }
+            if(null != videoToken){
+                Config.VIDEO_REQUEST_TOKEN = videoToken.getToken();
+            }
+            if(null != tentacleToken){
+                Config.TENTACLE_LOL_REQUEST_TOKEN = tentacleToken.getToken();
+            }
+            return true;
+        }
+    }
+
+    private void initConfig() {
         //当重新安装app的时候才会自动执行migrations和创建model对应的表
         final Configuration dbConfiguration = new Configuration.Builder(appContext).
                 setDatabaseName(Config.getDataBasePrefix() + DB_NAME).
@@ -124,53 +150,40 @@ public class AppLaunchFragment extends BaseFragment {
             @Override
             public void call(SingleSubscriber<? super Boolean> singleSubscriber) {
                 ActiveAndroid.initialize(dbConfiguration);
-
-                TokenInfo dataToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_DATA);
-                if(null == dataToken || dataToken.tokenIsExpired()){
-                    try {
-                        TokenInfo.loginAndSaveAllToken();
-                        dataToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_DATA);
-                    } catch (IOException | ParseException e) {
-                        e.printStackTrace();
-                        singleSubscriber.onError(e);
-                    }
-                }
-                TokenInfo videoToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_VIDEO);
-                TokenInfo tentacleToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_TENTACLE);
-
-                if(null != dataToken){
-                    Config.PUBLICK_LOL_REQUEST_TOKEN = dataToken.getToken();
-                }
-                if(null != videoToken){
-                    Config.VIDEO_REQUEST_TOKEN = videoToken.getToken();
-                }
-                if(null != tentacleToken){
-                    Config.TENTACLE_LOL_REQUEST_TOKEN = tentacleToken.getToken();
-                }
                 singleSubscriber.onSuccess(true);
             }
         })
-         .subscribeOn(Schedulers.newThread())
-         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Subscriber<Boolean>() {
-            @Override
-            public void onCompleted() {}
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Boolean>() {
+                    @Override
+                    public void onCompleted() {
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                Log.e(TAG, "onError: " + e.getMessage());
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onError: " + e.getMessage());
+                    }
 
-            @Override
-            public void onNext(Boolean token) {
-                gotoMainScreen();
-            }
-        });
-
+                    @Override
+                    public void onNext(Boolean token) {
+                        if (initDaiWanToken()) {
+                            gotoMainScreen();
+                        };
+                    }
+                });
     }
 
     private void gotoMainScreen() {
+        progressDialog.hide();
         getActivity().startActivity(new Intent(getContext(), MainViewActivity.class));
         getActivity().finish();
+    }
+
+    @Override
+    public void onDestroy() {
+        WebView hackDaiWanWebview = (WebView) getActivity().findViewById(R.id.hackDaiWanWebview);
+        hackDaiWanWebview.destroy();
+        super.onDestroy();
     }
 }

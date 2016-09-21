@@ -3,15 +3,13 @@ package com.sven.ou.module.lol.presenter.impl;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.activeandroid.Model;
 import com.activeandroid.query.Select;
 import com.sven.ou.common.entity.DaiWanLolResult;
-import com.sven.ou.module.launch.db.SearchHistory;
+import com.sven.ou.module.lol.db.SearchHistory;
 import com.sven.ou.module.lol.entity.Video;
 import com.sven.ou.module.lol.presenter.SearchVideoDialogPresenter;
 import com.sven.ou.network.Network;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observer;
