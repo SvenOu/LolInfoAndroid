@@ -71,8 +71,6 @@ public class AppLaunchFragment extends BaseFragment {
     }
 
     private void init() {
-        progressDialog.hide();
-        progressDialog.show();
         initImageLoader();
         initConfig();
     }
@@ -106,6 +104,7 @@ public class AppLaunchFragment extends BaseFragment {
     private boolean initDaiWanToken() {
         TokenInfo dataToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_DATA);
         if(null == dataToken || dataToken.tokenIsExpired()){
+            progressDialog.show();
             try {
                 TokenInfo.loginAndSaveAllToken(getActivity(), new TokenInfo.GetTokenSCallBack() {
                     @Override
@@ -174,8 +173,13 @@ public class AppLaunchFragment extends BaseFragment {
                 });
     }
 
-    private void gotoMainScreen() {
+    @Override
+    public void onStop() {
+        super.onStop();
         progressDialog.hide();
+    }
+
+    private void gotoMainScreen() {
         getActivity().startActivity(new Intent(getContext(), MainViewActivity.class));
         getActivity().finish();
     }

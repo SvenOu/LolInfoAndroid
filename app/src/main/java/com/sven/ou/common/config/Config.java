@@ -37,7 +37,7 @@ public class Config {
 
     /**
      *公共版战绩令牌,视频令牌,触手战绩令牌（云API）
-     * set in {@link AppLaunchFragment#initData()}
+     * set in {@link AppLaunchFragment#initDaiWanToken()}
      */
     public static String PUBLICK_LOL_REQUEST_TOKEN;
     public static String VIDEO_REQUEST_TOKEN;

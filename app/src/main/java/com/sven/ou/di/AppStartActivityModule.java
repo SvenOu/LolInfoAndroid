@@ -56,6 +56,9 @@ public class AppStartActivityModule {
 
     @Provides
     ProgressDialog provideMainPresenter() {
-        return new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
+        ProgressDialog dialog = new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
 }
