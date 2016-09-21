@@ -104,8 +104,8 @@ public class AppLaunchFragment extends BaseFragment {
     private boolean initDaiWanToken() {
         TokenInfo dataToken = TokenInfo.findAvalableTokenByType(TokenInfo.TOKEN_TYPE_DATA);
         if(null == dataToken || dataToken.tokenIsExpired()){
-            progressDialog.show();
             try {
+                progressDialog.show();
                 TokenInfo.loginAndSaveAllToken(getActivity(), new TokenInfo.GetTokenSCallBack() {
                     @Override
                     public void onGetAllToken(String dataToken, String videoToken, String tentacleToken, Date expiredDate) {
@@ -188,7 +188,7 @@ public class AppLaunchFragment extends BaseFragment {
     public void onDestroy() {
         WebView hackDaiWanWebview = (WebView) getActivity().findViewById(R.id.hackDaiWanWebview);
         hackDaiWanWebview.destroy();
-        progressDialog = null;
+        progressDialog.dismiss();
         super.onDestroy();
     }
 }
