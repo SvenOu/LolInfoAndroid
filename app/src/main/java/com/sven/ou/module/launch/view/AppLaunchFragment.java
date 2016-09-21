@@ -184,6 +184,7 @@ public class AppLaunchFragment extends BaseFragment {
     public void onDestroy() {
         WebView hackDaiWanWebview = (WebView) getActivity().findViewById(R.id.hackDaiWanWebview);
         hackDaiWanWebview.destroy();
+        progressDialog = null;
         super.onDestroy();
     }
 }
