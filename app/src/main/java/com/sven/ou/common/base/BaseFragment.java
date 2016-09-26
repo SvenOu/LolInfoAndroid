@@ -31,7 +31,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if(null == rootView && cacheContentData){
+        if(null == rootView || cacheContentData){
             rootView = onCreateFragmentView(inflater, container, savedInstanceState);
         }
         unbinder = ButterKnife.bind(this, rootView);
