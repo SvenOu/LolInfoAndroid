@@ -34,18 +34,17 @@ public class SearchUserPresenterImpl implements SearchUserPresenter{
                     @Override
                     public DaiWanLolResult<List<Area>> call(DaiWanLolResult<List<Area>> listDaiWanLolResult) {
                         List<Area> areaList = listDaiWanLolResult.getData();
-                        if(null == areaList || areaList.isEmpty()){
-                            return listDaiWanLolResult;
-                        }
-                        ActiveAndroid.beginTransaction();
-                        try {
-                            for(Area area: areaList){
-                                saveArea(area);
+                        if(null != areaList &&  areaList.size() > 0){
+                            ActiveAndroid.beginTransaction();
+                            try {
+                                for(Area area: areaList){
+                                    saveArea(area);
+                                }
+                                ActiveAndroid.setTransactionSuccessful();
                             }
-                            ActiveAndroid.setTransactionSuccessful();
-                        }
-                        finally {
-                            ActiveAndroid.endTransaction();
+                            finally {
+                                ActiveAndroid.endTransaction();
+                            }
                         }
 
                         List<Area_> area_s = new Select().from(Area_.class).execute();
