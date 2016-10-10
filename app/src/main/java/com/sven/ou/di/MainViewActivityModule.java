@@ -20,9 +20,11 @@ import android.content.Context;
 import com.sven.ou.module.lol.activities.MainViewActivity;
 import com.sven.ou.module.lol.presenter.AuthorInfoPresenter;
 import com.sven.ou.module.lol.presenter.NewestVideoPresenter;
+import com.sven.ou.module.lol.presenter.SearchUserPresenter;
 import com.sven.ou.module.lol.presenter.SearchVideoDialogPresenter;
 import com.sven.ou.module.lol.presenter.impl.AuthorInfoPresenterImpl;
 import com.sven.ou.module.lol.presenter.impl.NewestVideoPresenterImpl;
+import com.sven.ou.module.lol.presenter.impl.SearchUserPresenterImpl;
 import com.sven.ou.module.lol.presenter.impl.SearchVideoDialogPresenterImpl;
 import com.sven.ou.module.lol.view.AboutUSFragment;
 import com.sven.ou.module.lol.view.AuthorInfoFragment;
@@ -31,6 +33,7 @@ import com.sven.ou.module.lol.view.FriendFragment;
 import com.sven.ou.module.lol.view.HomeFragment;
 import com.sven.ou.module.lol.view.MyFragment;
 import com.sven.ou.module.lol.view.NewestVideoFragment;
+import com.sven.ou.module.lol.view.SearchUserFragment;
 import com.sven.ou.module.lol.view.SearchVideoDialog;
 import com.sven.ou.module.lol.view.SettingFragment;
 import com.sven.ou.navigation.ActivityScreenNavigator;
@@ -51,7 +54,8 @@ import dagger.Provides;
             DiscoverFragment.class,
             MyFragment.class,
             SettingFragment.class,
-            AboutUSFragment.class
+            AboutUSFragment.class,
+            SearchUserFragment.class
     },
     addsTo = ApplicationModule.class,
     library = true
@@ -86,6 +90,10 @@ public class MainViewActivityModule {
     @Provides
     SearchVideoDialogPresenter provideSearchVideoDialogPresenter(Context context) {
         return new SearchVideoDialogPresenterImpl(context);
+    }
+    @Provides
+    SearchUserPresenter provideSearchUserPresenter(Context context) {
+        return new SearchUserPresenterImpl(context);
     }
     @Provides
     SearchVideoDialog provideSearchVideoDialog( Navigator navigator, SearchVideoDialogPresenter searchVideoDialogPresenter) {

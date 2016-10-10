@@ -10,6 +10,7 @@ import com.sven.ou.module.lol.view.DiscoverFragment;
 import com.sven.ou.module.lol.view.FriendFragment;
 import com.sven.ou.module.lol.view.HomeFragment;
 import com.sven.ou.module.lol.view.MyFragment;
+import com.sven.ou.module.lol.view.SearchUserFragment;
 import com.sven.ou.module.lol.view.SettingFragment;
 
 import java.util.HashMap;
@@ -29,6 +30,7 @@ public class ActivityScreenNavigator {
     public static final String KEY_MY = "my";
     public static final String KEY_SETTING = "setting";
     public static final String KEY_ABOUT_US = "about_us";
+    public static final String KEY_SEARCH_USER = "search_user";
 
     public static final String KEY_AUTHOR_INFO = "author_info";
     public static final String KEY_NEWEAST_VIDEO = "newest_video";
@@ -88,6 +90,9 @@ public class ActivityScreenNavigator {
                     break;
                 case KEY_ABOUT_US:
                     fragment = new AboutUSFragment(key);
+                    break;
+                case KEY_SEARCH_USER:
+                    fragment = new SearchUserFragment(key);
                     break;
                 default:
                     break;

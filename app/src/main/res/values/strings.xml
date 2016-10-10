@@ -47,4 +47,6 @@
     <string name="not_found_video">找不到相应的视频</string>
 
     <string name="pressBackExit">再次点击后退键退出程序</string>
+    <string name="search_user_hint">输入用户名</string>
+    <string name="server_name">服务器: </string>
 </resources>

@@ -1,53 +1,63 @@
-package com.sven.ou.module.lol.entity;
-import com.google.gson.annotations.SerializedName;
-import com.sven.ou.module.lol.db.Area_;
+package com.sven.ou.module.lol.db;
 
-import java.io.Serializable;
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.sven.ou.module.lol.entity.Area;
 
 /**
  * 国服区信息
  */
-public class Area implements Serializable{
+@Table(name = "area")
+public class Area_ extends Model{
     /**
      * 区服ID
      */
-    @SerializedName("id")
+    @Column(name = "area_id", unique = true)
     private int areaId;
 
     /**
      * 简写
      */
+    @Column(name = "str_id")
     private String strid;
 
     /**
      * 名称
      */
+    @Column(name = "isp")
     private String isp;
 
     /**
      * 区服名称
      */
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "idc")
     private String idc;
 
+    @Column(name = "tcls")
     private int tcls;
 
     /**
      * 是否支持OB文件
      */
+    @Column(name = "ob")
     private int ob;
 
-    public Area_ toArea_(){
-        Area_ areaDB = new Area_();
-        areaDB.setAreaId(areaId);
-        areaDB.setStrid(strid);
-        areaDB.setIsp(isp);
-        areaDB.setName(name);
-        areaDB.setIdc(idc);
-        areaDB.setTcls(tcls);
-        areaDB.setOb(ob);
-        return areaDB;
+    public Area_() {}
+
+    public Area toArea(){
+        Area area = new Area();
+        area.setAreaId(areaId);
+        area.setStrid(strid);
+        area.setIsp(isp);
+        area.setName(name);
+        area.setIdc(idc);
+        area.setTcls(tcls);
+        area.setOb(ob);
+        return area;
     }
 
     public void setStrid(String strid) {

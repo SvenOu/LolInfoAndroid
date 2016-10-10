@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.lsjwzh.widget.recyclerviewpager.LoopRecyclerViewPager;
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
@@ -32,13 +31,10 @@ import com.sven.ou.module.lol.entity.thisweek.Hero;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.AuthorInfoPresenter;
 import com.sven.ou.navigation.Navigator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 

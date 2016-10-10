@@ -9,7 +9,11 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 
-    <color name="transparent">#00000000</color>
+    <color name="primary_2">#607D8B</color>
+    <color name="primary_dark_2">#455A64</color>
+    <color name="primary_light_2">#CFD8DC</color>
+    <color name="accent_2">#FFC107</color>
 
+    <color name="transparent">#00000000</color>
     <color name="window_background">#FFF5F5F5</color>
 </resources>

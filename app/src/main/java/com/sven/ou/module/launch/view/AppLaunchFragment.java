@@ -23,7 +23,9 @@ import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.config.Config;
 import com.sven.ou.module.lol.activities.MainViewActivity;
+import com.sven.ou.module.lol.db.Area_;
 import com.sven.ou.module.lol.db.SearchHistory;
+import com.sven.ou.module.lol.entity.Area;
 import com.sven.ou.module.lol.hackdaiwan.TokenInfo;
 import com.sven.ou.navigation.ActivityScreenNavigator;
 import java.io.IOException;
@@ -142,7 +144,11 @@ public class AppLaunchFragment extends BaseFragment {
                 setDatabaseName(Config.getDataBasePrefix() + DB_NAME).
                 setFormatType(Configuration.Builder.SQL_SCRIPT_XML_FORMAT).
                 setDatabaseVersion(DB_VERSION).
-                setModelClasses(SearchHistory.class, TokenInfo.class).
+                setModelClasses(
+                        SearchHistory.class,
+                        TokenInfo.class,
+                        Area_.class
+                ).
                 create();
 
         Single.create(new Single.OnSubscribe<Boolean>() {

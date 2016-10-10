@@ -40,6 +40,7 @@ public class TokenInfo extends Model {
     public static  final String DAIWAN_LOL_DATA_TOKEN_PAGE_URL = "/api/LoLToken.aspx";
     public static final  String DAIWAN_LOL_VIDEO_TOKEN_PAGE_URL = "/api/VideoToken.aspx";
     public static final  String DAIWAN_LOL_TENTACLE_TOKEN_PAGE_URL ="/api/LolTentacleToken.aspx";
+    public static final  String DAIWAN_LOL_REFRESH ="refresh";
     private static String currentPage;
     private static final SimpleDateFormat expiredDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private static WeakReference<Activity> activityWeakReference;
@@ -53,6 +54,8 @@ public class TokenInfo extends Model {
     private static String mTentacleToken;
     private static String mExpiredDate;
     private static GetTokenSCallBack callback;
+
+    private static boolean isRequestingToken = false;
 
 
     @Column(name = "token", unique = true)
@@ -95,10 +98,16 @@ public class TokenInfo extends Model {
                     loginDaiWan();
                 } else if(DAIWAN_LOL_LOGIN_SUCCESS_URL.equals(currentPage)){
                     gotoGetDataTokenPage();
+                }else if((DAIWAN_LOL_DATA_TOKEN_PAGE_URL + DAIWAN_LOL_REFRESH).equals(currentPage)){
+                    refreshToken(DAIWAN_LOL_DATA_TOKEN_PAGE_URL);
                 }else if(DAIWAN_LOL_DATA_TOKEN_PAGE_URL.equals(currentPage)){
                     getDataToken();
+                }else if((DAIWAN_LOL_VIDEO_TOKEN_PAGE_URL + DAIWAN_LOL_REFRESH).equals(currentPage)){
+                    refreshToken(DAIWAN_LOL_VIDEO_TOKEN_PAGE_URL);
                 }else if(DAIWAN_LOL_VIDEO_TOKEN_PAGE_URL.equals(currentPage)){
                     getVideoToken();
+                }else if((DAIWAN_LOL_TENTACLE_TOKEN_PAGE_URL + DAIWAN_LOL_REFRESH).equals(currentPage)){
+                    refreshToken(DAIWAN_LOL_TENTACLE_TOKEN_PAGE_URL);
                 }else if(DAIWAN_LOL_TENTACLE_TOKEN_PAGE_URL.equals(currentPage)){
                     getTentacleToken();
                 }
@@ -109,7 +118,6 @@ public class TokenInfo extends Model {
         hackDaiWanWebview.loadUrl(DAIWAN_LOLBASE_URL + DAIWAN_LOL_LOGIN_PAGE_URL);
     }
 
-
     private static void loginDaiWan() {
         runJs("$('input[name=txt_username]').val('" + DAIWAN_LOL_ACCOUNT_NAME +
                 "'); $('input[name=txt_password]').val('" + DAIWAN_LOL_ACCOUNT_PASSWORD + "');" +
@@ -118,7 +126,7 @@ public class TokenInfo extends Model {
     }
 
     private static void gotoGetDataTokenPage() {
-        runJs("window.control.onSetCurrentPage('" + DAIWAN_LOL_DATA_TOKEN_PAGE_URL + "');" +
+        runJs("window.control.onSetCurrentPage('" + DAIWAN_LOL_DATA_TOKEN_PAGE_URL + DAIWAN_LOL_REFRESH + "');" +
                 "window.location.href = '" + DAIWAN_LOL_DATA_TOKEN_PAGE_URL + "'; ", 100);
     }
 
@@ -126,18 +134,24 @@ public class TokenInfo extends Model {
         runJs("var dataToken = $('div[class~=\"alert-success\"] h4').text().trim(); " +
                 "window.control.onGetDataToken(dataToken); " +
                 "window.location.href = '" + DAIWAN_LOL_VIDEO_TOKEN_PAGE_URL + "';" +
-                "window.control.onSetCurrentPage('" + DAIWAN_LOL_VIDEO_TOKEN_PAGE_URL + "');", 500);
+                "window.control.onSetCurrentPage('" + DAIWAN_LOL_VIDEO_TOKEN_PAGE_URL + DAIWAN_LOL_REFRESH + "');", 500);
+    }
+
+    public static void refreshToken(String currentPage) {
+        runJs("window.control.onSetCurrentPage('" + currentPage + "');" +
+                "try{__doPostBack('lnk_request','');}catch(err){}", 100);
+        //"window.location.href = '" + currentPage + "'; "
     }
 
     private static void getVideoToken() {
         runJs("var videoToken = $('div[id=wrapper] section h4').text().trim();" +
                 "window.control.onGetVideoToken(videoToken); " +
                 "window.location.href = '" + DAIWAN_LOL_TENTACLE_TOKEN_PAGE_URL + "';" +
-                "window.control.onSetCurrentPage('" + DAIWAN_LOL_TENTACLE_TOKEN_PAGE_URL + "');", 500);
+                "window.control.onSetCurrentPage('" + DAIWAN_LOL_TENTACLE_TOKEN_PAGE_URL + DAIWAN_LOL_REFRESH + "');", 500);
     }
     private static void getTentacleToken() {
         runJs("var tentacleToken = $('div[id=wrapper] section h4').text().trim(); " +
-                "var str = $($('div[id=wrapper] div[class=form-group]')[2]).text().trim(); " +
+                "var str = $($('div[id=wrapper] div[class=form-group]')[3]).text().trim(); " +
                 "var expiredDate = str.substring(str.length-20, str.length).trim(); " +
                 "window.control.onGetTentacleToken(tentacleToken, expiredDate); ",500);
     }
