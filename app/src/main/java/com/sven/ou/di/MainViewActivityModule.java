@@ -15,6 +15,7 @@
  */
 package com.sven.ou.di;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.sven.ou.module.lol.activities.MainViewActivity;
@@ -98,5 +99,13 @@ public class MainViewActivityModule {
     @Provides
     SearchVideoDialog provideSearchVideoDialog( Navigator navigator, SearchVideoDialogPresenter searchVideoDialogPresenter) {
         return new SearchVideoDialog(activity, navigator, searchVideoDialogPresenter);
+    }
+
+    @Provides
+    ProgressDialog provideMainPresenter(@Named("activityContext")Context context) {
+        ProgressDialog dialog = new ProgressDialog(context, ProgressDialog.STYLE_SPINNER);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
 }

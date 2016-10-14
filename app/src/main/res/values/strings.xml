@@ -48,5 +48,9 @@
 
     <string name="pressBackExit">再次点击后退键退出程序</string>
     <string name="search_user_hint">输入用户名</string>
-    <string name="server_name">服务器: </string>
+
+    <string name="summoner">召唤师</string>
+    <string name="server_name">服务器</string>
+    <string name="server_area">大区</string>
+    <string name="queue">段位</string>
 </resources>

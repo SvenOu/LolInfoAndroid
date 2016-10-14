@@ -4,8 +4,12 @@ import android.content.Context;
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
 import com.sven.ou.common.entity.DaiWanLolResult;
+import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.lol.db.Area_;
 import com.sven.ou.module.lol.entity.Area;
+import com.sven.ou.module.lol.entity.Author;
+import com.sven.ou.module.lol.entity.UserHotInfo;
+import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.SearchUserPresenter;
 import com.sven.ou.network.Network;
 
@@ -57,6 +61,22 @@ public class SearchUserPresenterImpl implements SearchUserPresenter{
                         return listDaiWanLolResult;
                     }
                 }).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(observer);
+    }
+
+    @Override
+    public void getUserArea(String keyword, Observer observer) {
+        Network.getDaiWanLolDataApi().getUserArea(keyword).
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(observer);
+    }
+
+    @Override
+    public void getUserBaseInfo(String qquin,  int vaidObserver, Observer observer) {
+        Network.getDaiWanLolDataApi().getUserHotInfo(qquin, vaidObserver).
+                subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribe(observer);
     }

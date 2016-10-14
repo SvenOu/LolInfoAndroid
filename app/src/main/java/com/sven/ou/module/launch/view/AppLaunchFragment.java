@@ -24,6 +24,7 @@ import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.config.Config;
 import com.sven.ou.module.lol.activities.MainViewActivity;
 import com.sven.ou.module.lol.db.Area_;
+import com.sven.ou.module.lol.db.BattleLevel;
 import com.sven.ou.module.lol.db.SearchHistory;
 import com.sven.ou.module.lol.entity.Area;
 import com.sven.ou.module.lol.hackdaiwan.TokenInfo;
@@ -142,14 +143,14 @@ public class AppLaunchFragment extends BaseFragment {
         //当重新安装app的时候才会自动执行migrations和创建model对应的表
         final Configuration dbConfiguration = new Configuration.Builder(appContext).
                 setDatabaseName(Config.getDataBasePrefix() + DB_NAME).
-                setFormatType(Configuration.Builder.SQL_SCRIPT_XML_FORMAT).
+                setFormatType(Configuration.Builder.SQL_SCRIPT_DEFAULT_FORMAT).
                 setDatabaseVersion(DB_VERSION).
                 setModelClasses(
                         SearchHistory.class,
+                        BattleLevel.class,
                         TokenInfo.class,
                         Area_.class
-                ).
-                create();
+                ).create();
 
         Single.create(new Single.OnSubscribe<Boolean>() {
             @Override

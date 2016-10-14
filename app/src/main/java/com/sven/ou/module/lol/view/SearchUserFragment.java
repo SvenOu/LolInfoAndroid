@@ -1,23 +1,33 @@
 package com.sven.ou.module.lol.view;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.sven.ou.R;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
+import com.sven.ou.common.utils.ThrottleFirst;
+import com.sven.ou.common.utils.ViewUtil;
 import com.sven.ou.module.lol.adapters.SpinnerAreaAdapter;
+import com.sven.ou.module.lol.adapters.UserAreaAdapter;
 import com.sven.ou.module.lol.entity.Area;
+import com.sven.ou.module.lol.entity.Author;
+import com.sven.ou.module.lol.entity.UserArea;
+import com.sven.ou.module.lol.entity.UserHotInfo;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.SearchUserPresenter;
 
@@ -37,9 +47,13 @@ public class SearchUserFragment extends BaseFragment {
     @BindView(R.id.toolbarLeftIcon) ImageView toolbarLeftIcon;
     @BindView(R.id.toolbarRightIcon) ImageView toolbarRightIcon;
     @BindView(R.id.ryUserList) RecyclerView ryUserList;
-    @BindView(R.id.spinnerArea) Spinner spinnerArea;
+    @BindView(R.id.userInfoHeader) LinearLayout userInfoHeader;
+    @Inject ProgressDialog progressDialog;
 
-    private SpinnerAreaAdapter areaAdapter;
+    private UserAreaAdapter userAreaAdapter;
+
+//    @BindView(R.id.spinnerArea) Spinner spinnerArea;
+//    private SpinnerAreaAdapter areaAdapter;
 
     @SuppressLint("ValidFragment")
     public SearchUserFragment(String fragmentId) {
@@ -63,7 +77,37 @@ public class SearchUserFragment extends BaseFragment {
 
     @OnClick(R.id.toolbarRightIcon)
     public void toolbarRightIconClick(View view) {
+        if(TextUtils.isEmpty(toolbarSearchField.getText())){
+            return;
+        }
+        String id = TAG + "toolbarRightIconClick";
+        ThrottleFirst.throttleFirst(id, new Runnable() {
+            @Override
+            public void run() {
+                searchUser();
+            }
+        }, 500);
+    }
 
+    private void searchUser() {
+        progressDialog.show();
+        ryUserList.setAdapter(null);
+        ViewUtil.hideKeyboardFrom(getContext(), toolbarSearchField);
+        String keyword = String.valueOf(toolbarSearchField.getText());
+        searchUserPresenter.getUserArea(keyword, new LolObserver<DaiWanLolResult<List<UserArea>>>(appContext) {
+            @Override
+            public void onNext(DaiWanLolResult<List<UserArea>> daiWanLolResult) {
+                userAreaAdapter = new UserAreaAdapter(getContext(), daiWanLolResult.getData(), new UserAreaAdapter.Callback() {
+
+                    @Override
+                    public void onItemClick(UserAreaAdapter.ViewHolder viewHolder, UserArea userArea) {
+
+                    }
+                });
+                ryUserList.setAdapter(userAreaAdapter);
+                progressDialog.hide();
+            }
+        });
     }
 
     @Override
@@ -72,7 +116,14 @@ public class SearchUserFragment extends BaseFragment {
         init();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        progressDialog.hide();
+    }
+
     private void init() {
+        ryUserList.setLayoutManager(new LinearLayoutManager(getContext()));
         searchUserPresenter.loadUserArea(new LolObserver<DaiWanLolResult<List<Area>>>(appContext) {
             @Override
             public void onNext(DaiWanLolResult<List<Area>> daiWanLolResult) {
@@ -80,9 +131,15 @@ public class SearchUserFragment extends BaseFragment {
                     Logger.e(TAG, "area is empty.");
                     return;
                 }
-                areaAdapter = new SpinnerAreaAdapter(getContext(), daiWanLolResult.getData());
-                spinnerArea.setAdapter(areaAdapter);
+//                areaAdapter = new SpinnerAreaAdapter(getContext(), daiWanLolResult.getData());
+//                spinnerArea.setAdapter(areaAdapter);
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        progressDialog.dismiss();
     }
 }

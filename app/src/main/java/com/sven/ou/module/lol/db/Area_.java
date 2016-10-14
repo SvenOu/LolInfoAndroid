@@ -3,6 +3,8 @@ package com.sven.ou.module.lol.db;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.lol.entity.Area;
 
 /**
@@ -10,6 +12,9 @@ import com.sven.ou.module.lol.entity.Area;
  */
 @Table(name = "area")
 public class Area_ extends Model{
+
+    private static final String TAG = Area_.class.getSimpleName();
+
     /**
      * 区服ID
      */
@@ -58,6 +63,21 @@ public class Area_ extends Model{
         area.setTcls(tcls);
         area.setOb(ob);
         return area;
+    }
+
+    /**
+     * 耗时操作
+     * @return 返回大区信息
+     */
+    public static Area_ findArea_(int areaId){
+        Area_ area_ =
+                new Select().from(Area_.class).
+                        where("area_id = ? ", areaId)
+                        .executeSingle();
+        if(null == area_){
+            Logger.e(TAG, "cannot find Area_ !");
+        }
+        return area_;
     }
 
     public void setStrid(String strid) {
