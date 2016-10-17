@@ -14,22 +14,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
-
 import com.sven.ou.R;
+import com.sven.ou.common.appdata.MemoryData;
 import com.sven.ou.common.base.BaseFragment;
 import com.sven.ou.common.entity.DaiWanLolResult;
 import com.sven.ou.common.utils.Logger;
 import com.sven.ou.common.utils.ThrottleFirst;
 import com.sven.ou.common.utils.ViewUtil;
-import com.sven.ou.module.lol.adapters.SpinnerAreaAdapter;
 import com.sven.ou.module.lol.adapters.UserAreaAdapter;
 import com.sven.ou.module.lol.entity.Area;
-import com.sven.ou.module.lol.entity.Author;
 import com.sven.ou.module.lol.entity.UserArea;
-import com.sven.ou.module.lol.entity.UserHotInfo;
 import com.sven.ou.module.lol.oberver.LolObserver;
 import com.sven.ou.module.lol.presenter.SearchUserPresenter;
+import com.sven.ou.navigation.ActivityScreenNavigator;
 
 import java.util.List;
 
@@ -43,6 +40,8 @@ public class SearchUserFragment extends BaseFragment {
 
     @Inject SearchUserPresenter searchUserPresenter;
     @Inject Context appContext;
+    @Inject MemoryData memoryData;
+    @Inject ActivityScreenNavigator activityScreenNavigator;
     @BindView(R.id.toolbarSearchField) EditText toolbarSearchField;
     @BindView(R.id.toolbarLeftIcon) ImageView toolbarLeftIcon;
     @BindView(R.id.toolbarRightIcon) ImageView toolbarRightIcon;
@@ -51,6 +50,8 @@ public class SearchUserFragment extends BaseFragment {
     @Inject ProgressDialog progressDialog;
 
     private UserAreaAdapter userAreaAdapter;
+
+    private UserAreaAdapter.Callback callback;
 
 //    @BindView(R.id.spinnerArea) Spinner spinnerArea;
 //    private SpinnerAreaAdapter areaAdapter;
@@ -98,10 +99,10 @@ public class SearchUserFragment extends BaseFragment {
             @Override
             public void onNext(DaiWanLolResult<List<UserArea>> daiWanLolResult) {
                 userAreaAdapter = new UserAreaAdapter(getContext(), daiWanLolResult.getData(), new UserAreaAdapter.Callback() {
-
                     @Override
                     public void onItemClick(UserAreaAdapter.ViewHolder viewHolder, UserArea userArea) {
-
+                        memoryData.setCurSelectUserArea(userArea);
+                        activityScreenNavigator.swicthScreenByKey(ActivityScreenNavigator.KEY_MY);
                     }
                 });
                 ryUserList.setAdapter(userAreaAdapter);
@@ -109,6 +110,8 @@ public class SearchUserFragment extends BaseFragment {
             }
         });
     }
+
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -141,5 +144,13 @@ public class SearchUserFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         progressDialog.dismiss();
+    }
+
+    public UserAreaAdapter.Callback getCallback() {
+        return callback;
+    }
+
+    public void setCallback(UserAreaAdapter.Callback callback) {
+        this.callback = callback;
     }
 }

@@ -61,9 +61,8 @@ public class MainViewActivity extends BaseActivity implements NavigationView.OnN
                 activityScreenNavigator.swicthScreenByKey(ActivityScreenNavigator.KEY_DISCOVER);
                 break;
             case R.id.nav_my:
-                // TODO: 2016/10/10
-//                activityScreenNavigator.swicthScreenByKey(ActivityScreenNavigator.KEY_MY);
-                activityScreenNavigator.swicthScreenByKey(ActivityScreenNavigator.KEY_SEARCH_USER);
+                activityScreenNavigator.swicthScreenByKey(ActivityScreenNavigator.KEY_MY);
+//                activityScreenNavigator.swicthScreenByKey(ActivityScreenNavigator.KEY_SEARCH_USER);
                 break;
             case R.id.nav_setting:
                 activityScreenNavigator.swicthScreenByKey(ActivityScreenNavigator.KEY_SETTING);

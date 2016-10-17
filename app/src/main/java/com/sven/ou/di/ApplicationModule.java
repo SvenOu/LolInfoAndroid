@@ -19,6 +19,7 @@ import android.content.Context;
 import android.location.LocationManager;
 
 import com.sven.ou.LolApplication;
+import com.sven.ou.common.appdata.MemoryData;
 import com.sven.ou.module.test.model.LolApiTest;
 import com.sven.ou.module.test.model.RecusionTest;
 import com.sven.ou.module.test.model.impl.LolApiTestImpl;
@@ -65,5 +66,10 @@ public class ApplicationModule {
     @Singleton
     LolApiTest provideLolApiTest(Context applicationContext) {
         return  new LolApiTestImpl(applicationContext);
+    }
+    @Provides
+    @Singleton
+    MemoryData provideMemoryData() {
+        return  new MemoryData();
     }
 }
