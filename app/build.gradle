@@ -2,26 +2,31 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion "${buildVars.compileSdkVersion}".toInteger()
+    buildToolsVersion "${buildVars.buildToolsVersion}"
 
     defaultConfig {
-        applicationId "com.sven.ou"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.1.0"
+        applicationId "${buildVars.applicationId}"
+        minSdkVersion "${buildVars.minSdkVersion}".toInteger()
+        targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
+        versionCode "${buildVars.appVersionCode}".toInteger()
+        versionName "${buildVars.appVersionName}"
         manifestPlaceholders = [
-                GETUI_APP_ID : "JmnTZJpSt97Ct23oRCVHY7",
-                GETUI_APP_KEY : "SWvI5zQDGk8pszrYwADaA7",
-                GETUI_APP_SECRET : "JP1h9J5BbE9RHUL2pQZru5",
-                PACKAGE_NAME : applicationId
+                GETUI_APP_ID    : "${buildVars.GETUI_APP_ID}",
+                GETUI_APP_KEY   : "${buildVars.GETUI_APP_KEY}",
+                GETUI_APP_SECRET: "${buildVars.GETUI_APP_SECRET}",
+                PACKAGE_NAME    : applicationId
         ]
         vectorDrawables.useSupportLibrary = true
+
+        buildConfigField 'String', 'CURRENT_MODE', "${buildVars.appCurrentMode}"
+        buildConfigField 'String', 'DEV_MODE', "${buildVars.DEV_MODE}"
+        buildConfigField 'String', 'TEST_MODE',"${buildVars.TEST_MODE}"
+        buildConfigField 'String', 'PROD_MODE', "${buildVars.PROD_MODE}"
+        buildConfigField 'String', 'TRAINER_MODE', "${buildVars.TRAINER_MODE}"
     }
 
     dexOptions {
-        incremental true
         javaMaxHeapSize "8g"
     }
 
@@ -46,16 +51,16 @@ android {
 //            shrinkResources false
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //
-//            applicationVariants.all { variant ->
-//                variant.outputs.each { output ->
-//                    def outputFile = output.outputFile
-//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-//                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
-//                        def fileName = "boohee_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
-//                        output.outputFile = new File(outputFile.parent, fileName)
-//                    }
-//                }
-//            }
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.contains('-release')) {
+                        def formattedDate = new Date().format('yyyy-MM-dd_HHmmss')
+                        def fileName = "LolInfoAndroid_v${defaultConfig.versionName}_" + formattedDate + ".apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
         }
     }
     // 友盟多渠道打包
@@ -82,9 +87,9 @@ dependencies {
     //junit
     testCompile 'junit:junit:4.12'
     //appcompat-v7
-    compile 'com.android.support:appcompat-v7:23.+'
+    compile "${androidSupportAppcompat}"
     //support design
-    compile 'com.android.support:design:23.+'
+    compile "${androidSupportDesign}"
     compile 'com.android.support:cardview-v7:23.+'
     compile 'com.android.support:recyclerview-v7:23.+'
     compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.1'
@@ -113,7 +118,7 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.7'
     compile 'io.reactivex:rxandroid:1.2.1'
     //mutidex
-    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:multidex:1.0.1'
     //html解析
     compile 'org.jsoup:jsoup:1.9.2'
     //other

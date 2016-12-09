@@ -1,12 +1,72 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+
+    println "---开始加载配置文件---"
+    def Properties props = new Properties()
+    def propFile = file('build_app_config.properties')
+    if (propFile.canRead()) {
+        props.load(new FileInputStream(propFile))
+        println "------versionCode: " + props['app.versionCode']
+        println "------versionName: " + props['app.versionName']
+        println "------isDevelopMode: " + props['app.isDevelopMode']
+
+        println "------currentMode: " + props['app.currentMode']
+        println "------DEV_MODE: " + props['app.DEV_MODE']
+        println "------TEST_MODE: " + props['app.TEST_MODE']
+        println "------PROD_MODE: " + props['app.PROD_MODE']
+        println "------TRAINER_MODE: " + props['app.TRAINER_MODE']
+
+        println "------JPUSH_CHANNEL: " + props['app.JPUSH_CHANNEL']
+        println "------JPUSH_APP_ID: " + props['app.JPUSH_APP_ID']
+        println "------JPUSH_APP_SECRET: " + props['app.JPUSH_APP_SECRET']
+
+        println "------GETUI_APP_ID: " + props['app.GETUI_APP_ID']
+        println "------GETUI_APP_KEY: " + props['app.GETUI_APP_KEY']
+        println "------GETUI_APP_SECRET: " + props['app.GETUI_APP_SECRET']
+
+    } else {
+        println "---读取配置文件错误---"
+    }
+    println "---加载配置文件完成---"
+
+    ext {
+        buildVars = [
+            // DEV， TEST， TRAINER， PROD
+            appCurrentMode   : props['app.currentMode'],
+            appVersionCode   : props['app.versionCode'],
+            appVersionName   : props['app.versionName'],
+
+            DEV_MODE    : props['app.DEV_MODE'],
+            TEST_MODE   : props['app.TEST_MODE'],
+            PROD_MODE   : props['app.PROD_MODE'],
+            TRAINER_MODE: props['app.TRAINER_MODE'],
+
+            applicationId    : "com.sven.ou",
+            compileSdkVersion: 24,
+            buildToolsVersion: '25.0.1',
+            minSdkVersion    : 15,
+            targetSdkVersion : 24,
+
+            JPUSH_CHANNEL    : props['app.JPUSH_CHANNEL'],
+            JPUSH_APP_ID     : props['app.JPUSH_APP_ID'],
+            JPUSH_APP_SECRET : props['app.JPUSH_APP_SECRET'],
+
+            GETUI_APP_ID     : props['app.GETUI_APP_ID'],
+            GETUI_APP_KEY    : props['app.GETUI_APP_KEY'],
+            GETUI_APP_SECRET : props['app.GETUI_APP_SECRET']
+        ]
+        gmsPlayService = 'com.google.android.gms:play-services:8.3.0'
+        androidSupportAppcompat = 'com.android.support:appcompat-v7:23.2.1'
+        androidSupportDesign = 'com.android.support:design:23.2.1'
+
+    }
     repositories {
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
@@ -15,7 +75,7 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"}
+        maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
         maven { url "https://jitpack.io" }
     }
 }

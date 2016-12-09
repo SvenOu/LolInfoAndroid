@@ -1,5 +1,6 @@
 package com.sven.ou.common.config;
 
+import com.sven.ou.BuildConfig;
 import com.sven.ou.module.launch.view.AppLaunchFragment;
 
 /**
@@ -10,16 +11,16 @@ public class Config {
     /**
      * 测试模式
      */
-    private static final String TEST_MODE = "TEST";
+    private static final String TEST_MODE = BuildConfig.TEST_MODE;
     /**
      * 正式版发布
      */
-    private static final String PROD_MODE = "PROD";
+    private static final String PROD_MODE = BuildConfig.PROD_MODE;
 
     /**
      * change to "PROD" if need to publish the app.
      */
-    private static final String CURRENT_MODE = TEST_MODE;
+    private static final String CURRENT_MODE = BuildConfig.CURRENT_MODE;
 
     /**
      * 带玩服务器
