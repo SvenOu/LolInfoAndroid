@@ -1,6 +1,8 @@
 package com.sven.ou.module.lol.entity.system;
 
-public class BaseMenuData {
+import java.io.Serializable;
+
+public class BaseMenuData implements Serializable{
 
     private String key;
     private Class targetClass;
