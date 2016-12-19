@@ -4,8 +4,12 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
+import com.google.gson.annotations.SerializedName;
+import com.sven.ou.common.utils.BeanUtils;
 import com.sven.ou.common.utils.Logger;
 import com.sven.ou.module.lol.entity.Area;
+
+import java.io.Serializable;
 
 /**
  * 国服区信息
@@ -18,6 +22,7 @@ public class Area_ extends Model{
     /**
      * 区服ID
      */
+    @SerializedName(value = "id")
     @Column(name = "area_id", unique = true)
     private int areaId;
 
@@ -54,15 +59,15 @@ public class Area_ extends Model{
     public Area_() {}
 
     public Area toArea(){
-        Area area = new Area();
-        area.setAreaId(areaId);
-        area.setStrid(strid);
-        area.setIsp(isp);
-        area.setName(name);
-        area.setIdc(idc);
-        area.setTcls(tcls);
-        area.setOb(ob);
-        return area;
+//        Area area = new Area();
+//        area.setAreaId(areaId);
+//        area.setStrid(strid);
+//        area.setIsp(isp);
+//        area.setName(name);
+//        area.setIdc(idc);
+//        area.setTcls(tcls);
+//        area.setOb(ob);
+        return (Area) BeanUtils.cloneObject(this, Area.class);
     }
 
     /**

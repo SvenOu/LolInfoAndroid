@@ -1,5 +1,7 @@
 package com.sven.ou.module.lol.entity;
+
 import com.google.gson.annotations.SerializedName;
+import com.sven.ou.common.utils.BeanUtils;
 import com.sven.ou.module.lol.db.Area_;
 
 import java.io.Serializable;
@@ -7,11 +9,12 @@ import java.io.Serializable;
 /**
  * 国服区信息
  */
-public class Area implements Serializable{
+public class Area implements Serializable {
     /**
-     * 区服ID
+     * 区服ID,
+     * SerializedName("id") 是{@link  BeanUtils}所需
      */
-    @SerializedName("id")
+    @SerializedName(value = "id")
     private int areaId;
 
     /**
@@ -38,16 +41,16 @@ public class Area implements Serializable{
      */
     private int ob;
 
-    public Area_ toArea_(){
-        Area_ areaDB = new Area_();
-        areaDB.setAreaId(areaId);
-        areaDB.setStrid(strid);
-        areaDB.setIsp(isp);
-        areaDB.setName(name);
-        areaDB.setIdc(idc);
-        areaDB.setTcls(tcls);
-        areaDB.setOb(ob);
-        return areaDB;
+    public Area_ toArea_() {
+//        Area_ areaDB = new Area_();
+//        areaDB.setAreaId(areaId);
+//        areaDB.setStrid(strid);
+//        areaDB.setIsp(isp);
+//        areaDB.setName(name);
+//        areaDB.setIdc(idc);
+//        areaDB.setTcls(tcls);
+//        areaDB.setOb(ob);
+        return (Area_) BeanUtils.cloneObject(this, Area_.class);
     }
 
     public void setStrid(String strid) {
