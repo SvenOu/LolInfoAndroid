@@ -1,0 +1,94 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="MissingPrefix">
+<!--
+	&lt;!&ndash; BASE TEXT STYLE &ndash;&gt;
+	<style name="TEXT">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	&lt;!&ndash; RED TEXTS &ndash;&gt;
+	<style name="TEXT.RED" parent="TEXT">
+		<item name="android:textColor">@color/c1_1</item>
+		<item name="android:background">@android:color/transparent</item>
+	</style>
+	<style name="TEXT.RED.UPPER_CASE" parent="TEXT.RED"><item name="android:textAllCaps">true</item></style>
+	&lt;!&ndash; RED TEXTS FONT FAMILY 1&ndash;&gt;
+	<style name="TEXT.RED.FONT_1" parent="TEXT.RED"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_1" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f1</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_2" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f2</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_3" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f3</item></style>
+	<style name="TEXT.RED.UPPER_CASE.FONT_1.SIZE_3" parent="TEXT.RED.UPPER_CASE"><item name="fontPath">@string/font_family_1</item><item name="android:textSize">@dimen/f3</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_7" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f7</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_8" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f8</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_9" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f9</item></style>
+	<style name="TEXT.RED.UPPER_CASE.FONT_1.SIZE_11" parent="TEXT.RED.UPPER_CASE"><item name="fontPath">@string/font_family_1</item><item name="android:textSize">@dimen/f11</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_12" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f12</item></style>
+	<style name="TEXT.RED.FONT_1.SIZE_13" parent="TEXT.RED.FONT_1"><item name="android:textSize">@dimen/f13</item></style>
+	&lt;!&ndash; RED TEXTS FONT FAMILY 2&ndash;&gt;
+	<style name="TEXT.RED.FONT_2" parent="TEXT.RED"><item name="fontPath">@string/font_family_2</item></style>
+	<style name="TEXT.RED.FONT_2.SIZE_3" parent="TEXT.RED.FONT_2"><item name="android:textSize">@dimen/f3</item></style>
+	<style name="TEXT.RED.FONT_2.SIZE_4" parent="TEXT.RED.FONT_2"><item name="android:textSize">@dimen/f4</item></style>
+	<style name="TEXT.RED.FONT_2.SIZE_5" parent="TEXT.RED.FONT_2"><item name="android:textSize">@dimen/f5</item></style>
+	<style name="TEXT.RED.FONT_2.SIZE_6" parent="TEXT.RED.FONT_2"><item name="android:textSize">@dimen/f6</item></style>
+	<style name="TEXT.RED.FONT_2.SIZE_7" parent="TEXT.RED.FONT_2"><item name="android:textSize">@dimen/f7</item></style>
+	<style name="TEXT.RED.FONT_2.SIZE_9" parent="TEXT.RED.FONT_2"><item name="android:textSize">@dimen/f9</item></style>
+	<style name="TEXT.RED.FONT_2.SIZE_10" parent="TEXT.RED.FONT_2"><item name="android:textSize">@dimen/f10</item></style>
+	&lt;!&ndash; RED TEXTS FONT FAMILY 3&ndash;&gt;
+	<style name="TEXT.RED.FONT_3" parent="TEXT.RED"><item name="fontPath">@string/font_family_3</item></style>
+	<style name="TEXT.RED.FONT_3.SIZE_2" parent="TEXT.RED.FONT_3"><item name="android:textSize">@dimen/f2</item></style>
+	<style name="TEXT.RED.FONT_3.SIZE_4" parent="TEXT.RED.FONT_3"><item name="android:textSize">@dimen/f4</item></style>
+	<style name="TEXT.RED.FONT_3.SIZE_9" parent="TEXT.RED.FONT_3"><item name="android:textSize">@dimen/f9</item></style>
+	&lt;!&ndash; RED TEXTS FONT FAMILY 4&ndash;&gt;
+	<style name="TEXT.RED.FONT_4.SIZE_3" parent="TEXT.RED"><item name="fontPath">@string/font_family_4</item><item name="android:textSize">@dimen/f3</item></style>
+	<style name="TEXT.RED.FONT_4.SIZE_4" parent="TEXT.RED"><item name="fontPath">@string/font_family_4</item><item name="android:textSize">@dimen/f4</item></style>
+	&lt;!&ndash; RED TEXTS FONT FAMILY 5&ndash;&gt;
+	<style name="TEXT.RED.FONT_5.SIZE_11" parent="TEXT.RED"><item name="fontPath">@string/font_family_5</item><item name="android:textSize">@dimen/f11</item></style>
+
+	&lt;!&ndash; BLACK TEXTS&ndash;&gt;
+	<style name="TEXT.BLACK" parent="TEXT">
+		<item name="android:textColor">@color/c3_1</item>
+		<item name="android:background">@android:color/transparent</item>
+	</style>
+	<style name="TEXT.BLACK.FONT_1" parent="TEXT.BLACK"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="TEXT.BLACK.FONT_2" parent="TEXT.BLACK"><item name="fontPath">@string/font_family_2</item></style>
+	<style name="TEXT.BLACK.FONT_1.SIZE_2" parent="TEXT.BLACK.FONT_1"><item name="android:textSize">@dimen/f2</item></style>
+	<style name="TEXT.BLACK.FONT_1.SIZE_3" parent="TEXT.BLACK.FONT_1"><item name="android:textSize">@dimen/f3</item></style>
+	<style name="TEXT.BLACK.FONT_1.SIZE_5" parent="TEXT.BLACK.FONT_1"><item name="android:textSize">@dimen/f5</item></style>
+	<style name="TEXT.BLACK.FONT_1.SIZE_13" parent="TEXT.BLACK.FONT_1"><item name="android:textSize">@dimen/f13</item></style>
+	<style name="TEXT.BLACK.FONT_2.SIZE_7" parent="TEXT.BLACK.FONT_2"><item name="android:textSize">@dimen/f7</item></style>
+	<style name="TEXT.BLACK.FONT_3.SIZE_9" parent="TEXT.BLACK"><item name="fontPath">@string/font_family_3</item><item name="android:textSize">@dimen/f9</item></style>
+
+	&lt;!&ndash; BLACK TEXTS c3-2&ndash;&gt;
+	<style name="TEXT.BLACK2" parent="TEXT">
+		<item name="android:textColor">@color/c3_2</item>
+		<item name="android:background">@android:color/transparent</item>
+	</style>
+	<style name="TEXT.BLACK2.FONT_2" parent="TEXT.BLACK2"><item name="fontPath">@string/font_family_2</item></style>
+	<style name="TEXT.BLACK2.FONT_2.SIZE_7" parent="TEXT.BLACK2.FONT_2"><item name="android:textSize">@dimen/f7</item></style>
+	<style name="TEXT.BLACK2.FONT_2.SIZE_9" parent="TEXT.BLACK2.FONT_2"><item name="android:textSize">@dimen/f9</item></style>
+
+	&lt;!&ndash; BLACK TEXTS c3-7&ndash;&gt;
+	<style name="TEXT.BLACK3" parent="TEXT">
+		<item name="android:textColor">@color/c3_7</item>
+		<item name="android:background">@android:color/transparent</item>
+	</style>
+	<style name="TEXT.BLACK3.FONT_1" parent="TEXT.BLACK2"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="TEXT.BLACK3.FONT_1.SIZE_9" parent="TEXT.BLACK3.FONT_1"><item name="android:textSize">@dimen/f9</item></style>
+
+	&lt;!&ndash; WHITE TEXTS&ndash;&gt;
+	<style name="TEXT.WHITE" parent="TEXT">
+		<item name="android:textColor">@color/c4_1</item>
+		<item name="android:background">@android:color/transparent</item>
+	</style>
+	<style name="TEXT.WHITE.FONT_1.SIZE_1" parent="TEXT.WHITE"><item name="fontPath">@string/font_family_1</item><item name="android:textSize">@dimen/f1</item></style>
+	<style name="TEXT.WHITE.UPPER_CASE.FONT_1.SIZE_11" parent="TEXT.WHITE"><item name="android:textAllCaps">true</item><item name="fontPath">@string/font_family_1</item><item name="android:textSize">@dimen/f11</item></style>
+	<style name="TEXT.WHITE.FONT_1.SIZE_12" parent="TEXT.WHITE"><item name="fontPath">@string/font_family_1</item><item name="android:textSize">@dimen/f12</item></style>
+	<style name="TEXT.WHITE.FONT_2.SIZE_3" parent="TEXT.WHITE"><item name="fontPath">@string/font_family_2</item><item name="android:textSize">@dimen/f3</item></style>
+	<style name="TEXT.WHITE.FONT_2.SIZE_9" parent="TEXT.WHITE"><item name="fontPath">@string/font_family_2</item><item name="android:textSize">@dimen/f9</item></style>
+	<style name="TEXT.WHITE.FONT_3.SIZE_2" parent="TEXT.WHITE"><item name="fontPath">@string/font_family_3</item><item name="android:textSize">@dimen/f2</item></style>
+	<style name="TEXT.WHITE.FONT_3.SIZE_5" parent="TEXT.WHITE"><item name="fontPath">@string/font_family_3</item><item name="android:textSize">@dimen/f5</item></style>
+	<style name="TEXT.WHITE.FONT_3.SIZE_9" parent="TEXT.WHITE"><item name="fontPath">@string/font_family_3</item><item name="android:textSize">@dimen/f9</item></style>
+	-->
+</resources>

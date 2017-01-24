@@ -1,0 +1,77 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="MissingPrefix">
+
+	<!--<style name="BUTTON">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/red_btn_height</item>
+	</style>
+
+	&lt;!&ndash; RED BUTTONS &ndash;&gt;
+	<style name="BUTTON.RED" parent="BUTTON">
+		<item name="android:background">@drawable/red_rectangle_button</item>
+		<item name="android:textColor">@color/c4_1</item>
+	</style>
+	<style name="BUTTON.RED.UPPER_CASE" parent="BUTTON.RED"><item name="android:textAllCaps">true</item></style>
+	<style name="BUTTON.RED.LOWER_CASE" parent="BUTTON.RED"><item name="android:textAllCaps">false</item></style>
+	<style name="BUTTON.RED.UPPER_CASE.FONT_1" parent="BUTTON.RED.UPPER_CASE"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="BUTTON.RED.UPPER_CASE.FONT_1.SIZE_2" parent="BUTTON.RED.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f2</item></style>
+	<style name="BUTTON.RED.UPPER_CASE.FONT_1.SIZE_3" parent="BUTTON.RED.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f3</item></style>
+	<style name="BUTTON.RED.UPPER_CASE.FONT_1.SIZE_5" parent="BUTTON.RED.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f5</item></style>
+	<style name="BUTTON.RED.UPPER_CASE.FONT_1.SIZE_7" parent="BUTTON.RED.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f7</item></style>
+	<style name="BUTTON.RED.UPPER_CASE.FONT_1.SIZE_9" parent="BUTTON.RED.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f9</item></style>
+	<style name="BUTTON.RED.FONT_2" parent="BUTTON.RED"><item name="fontPath">@string/font_family_2</item></style>
+	<style name="BUTTON.RED.FONT_2.SIZE_9" parent="BUTTON.RED.FONT_2"><item name="android:textSize">@dimen/f9</item></style>
+
+	&lt;!&ndash; BLACK BUTTONS &ndash;&gt;
+	<style name="BUTTON.PALE_YELLOOW" parent="BUTTON">
+		<item name="android:background">@drawable/pale_yellow_button</item>
+		<item name="android:textColor">@color/c3_1</item>
+	</style>
+	<style name="BUTTON.PALE_YELLOOW.UPPER_CASE" parent="BUTTON.PALE_YELLOOW"><item name="android:textAllCaps">true</item></style>
+	<style name="BUTTON.PALE_YELLOOW.UPPER_CASE.FONT_1" parent="BUTTON.PALE_YELLOOW.UPPER_CASE"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="BUTTON.PALE_YELLOOW.UPPER_CASE.FONT_1.SIZE_5" parent="BUTTON.PALE_YELLOOW.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f5</item></style>
+	<style name="BUTTON.PALE_YELLOOW.UPPER_CASE.FONT_1.SIZE_7" parent="BUTTON.PALE_YELLOOW.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f7</item></style>
+
+	&lt;!&ndash; YELLOW BUTTONS &ndash;&gt;
+	<style name="BUTTON.YELLOW" parent="BUTTON">
+		<item name="android:background">@drawable/orange_button</item>
+		<item name="android:textColor">@color/c3_1</item>
+	</style>
+	<style name="BUTTON.YELLOW.UPPER_CASE" parent="BUTTON.YELLOW"><item name="android:textAllCaps">true</item></style>
+	<style name="BUTTON.YELLOW.UPPER_CASE.FONT_1" parent="BUTTON.YELLOW.UPPER_CASE"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="BUTTON.YELLOW.UPPER_CASE.FONT_1.SIZE_5" parent="BUTTON.YELLOW.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f5</item></style>
+
+	&lt;!&ndash; WHITE BORDER, TRANSPARENT BG BUTTONS &ndash;&gt;
+	<style name="BUTTON.WHITE_BORDER" parent="BUTTON">
+		<item name="android:background">@drawable/transparent_button_white_border</item>
+		<item name="android:textColor">@color/c4_1</item>
+	</style>
+	<style name="BUTTON.WHITE_BORDER.UPPER_CASE" parent="BUTTON.WHITE_BORDER"><item name="android:textAllCaps">true</item></style>
+	<style name="BUTTON.WHITE_BORDER.UPPER_CASE.FONT_1" parent="BUTTON.WHITE_BORDER.UPPER_CASE"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="BUTTON.WHITE_BORDER.UPPER_CASE.FONT_1.SIZE_6" parent="BUTTON.WHITE_BORDER.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f6</item></style>
+	<style name="BUTTON.WHITE_BORDER.UPPER_CASE.FONT_1.SIZE_7" parent="BUTTON.WHITE_BORDER.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f7</item></style>
+
+	&lt;!&ndash; WHITE BORDER, TRANSPARENT BG BUTTONS &ndash;&gt;
+	<style name="BUTTON.RED_BORDER" parent="BUTTON">
+		<item name="android:background">@drawable/red_rectangle_shape_no_padding_selector</item>
+		<item name="android:textColor">@color/c1_1</item>
+	</style>
+	<style name="BUTTON.RED_BORDER.UPPER_CASE" parent="BUTTON.RED_BORDER"><item name="android:textAllCaps">true</item></style>
+	<style name="BUTTON.RED_BORDER.UPPER_CASE.FONT_1" parent="BUTTON.RED_BORDER.UPPER_CASE"><item name="fontPath">@string/font_family_1</item></style>
+	<style name="BUTTON.RED_BORDER.UPPER_CASE.FONT_1.SIZE_5" parent="BUTTON.RED_BORDER.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f5</item></style>
+	<style name="BUTTON.RED_BORDER.UPPER_CASE.FONT_1.SIZE_7" parent="BUTTON.RED_BORDER.UPPER_CASE.FONT_1"><item name="android:textSize">@dimen/f7</item></style>
+
+
+	<style name="BUTTON_RED_BORDER_RADIUS">
+		<item name="android:background">@drawable/red_radius_button</item>
+		<item name="android:textColor">@color/c4_1</item>
+		<item name="android:textSize">@dimen/f7</item>
+	</style>
+
+	&lt;!&ndash;WHITE BG BUTTON&ndash;&gt;
+	<style name="BUTTON_WHITE_BG">
+		<item name="android:background">@drawable/pale_yellow_button</item>
+	</style>-->
+
+</resources>
